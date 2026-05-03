@@ -64,15 +64,16 @@
         nav {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
             padding: 1.5rem 5%;
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(10, 10, 10, 0.8); /* Background Nav Transparan */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
+            z-index: 9999;
             border-bottom: 0.1rem solid rgba(168, 85, 247, 0.2);
         }
         
@@ -86,9 +87,8 @@
         .nav-logo {
             color: white;
             font-weight: bold;
-            font-size: 2rem;
+            font-size: 1.8rem;
             text-decoration: none;
-            z-index: 1002; /* Agar logo selalu di atas menu */
         }
         
         /* Sembunyikan Checkbox */
@@ -99,47 +99,60 @@
         #menu-toggle, .hamburger {
             display: none;
         }
+
+        .nav-links {
+            position: absolute;
+            top: 100%; /* Tepat di bawah navbar */
+            right: 0;
+            width: 250px; /* Lebar dropdown kotak menu */
+            background: rgba(10, 10, 10, 0.8); /* Background Menu Transparan */
+            backdrop-filter: blur(15px);
+            display: none; /* Sembunyi sebelum diklik */
+            flex-direction: column;
+            list-style: none;
+            margin: 0;
+            padding: 1rem 0;
+            border-left: 1px solid rgba(168, 85, 247, 0.3);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .nav-links li {
+            width: 100%;
+            text-align: right; /* Teks rata kanan tepat di bawah tanda silang */
+            padding-right: 15%; /* Jarak dari tepi kanan */
+        }
+
+        .nav-links li a {
+            display: block;
+            padding: 1.2rem 0;
+            color: white;
+            text-decoration: none;
+            font-size: 1.6rem;
+            transition: 0.3s;
+        }
         
-        /* Styling Hamburger Menu */
+        .nav-links li a:hover {
+            color: var(--accent-purple);
+        }
+
         .hamburger {
             display: flex;
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
-            padding: 5px;
         }
         
         .hamburger span {
             display: block;
             width: 25px;
             height: 3px;
-            background: white; /* Pastikan warna putih agar terlihat */
+            background: white;
             border-radius: 2px;
             transition: 0.3s;
         }
 
-        .nav-links {
-            position: absolute;
-            top: 100%; /* Muncul tepat di bawah navbar */
-            left: 0;
-            width: 100%;
-            background: rgba(15, 15, 15, 0.98);
-            display: none; /* Sembunyi secara default */
-            flex-direction: column;
-            list-style: none;
-            padding: 2rem 0;
-            border-bottom: 0.1rem solid rgba(168, 85, 247, 0.2);
-            margin: 0;
-        }
-
-        .nav-links li {
-            width: 100%;
-            text-align: center;
-            padding: 1.5rem 0;
-        }
-
         #menu-toggle:checked ~ .nav-links {
-            display: flex;
+            display: flex !important;
         }
         
         /* Animasi Hamburger ke (X) saat diklik */
@@ -151,6 +164,10 @@
         }
         #menu-toggle:checked ~ .hamburger span:nth-child(3) {
             transform: rotate(-45deg) translate(5px, -6px);
+        }
+        
+        #menu-toggle {
+            display: none !important;
         }
 
         .nav-links a {
