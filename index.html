@@ -65,12 +65,14 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 10%;
+            padding: 10px 0;
             background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            overflow-x: auto;
+            white-space: nowrap;
             align-items: center;
             z-index: 1000;
             border-bottom: 0.1rem solid rgba(168, 85, 247, 0.2);
@@ -215,16 +217,31 @@
             font-weight: 400;
         }
 
+        #home img {
+            max-width: 250px; /* Batasi lebar maksimal foto di HP */
+            width: 70%;      /* Biar fleksibel */
+            height: auto;
+        }
+
         /* 7. KUNCI TAMPILAN MOBILE (HP) */
         @media (max-width: 768px) {
             #home {
+                display: flex;
+                align-items: center;
                 flex-direction: column; /* Kembali ke atas-bawah di HP */
                 justify-content: flex-start;
                 height: auto;
                 min-height: auto;
                 text-align: center;
-                padding-top: 7rem;
+                padding-top: 120px;
                 gap: 2rem;
+            }
+
+            #home p {
+                width: 90% !important;
+                margin: 0 auto;
+                font-size: 0.95rem; /* Sedikit dikecilkan agar enak dibaca di HP */
+                line-height: 1.6;
             }
 
             section {
@@ -265,6 +282,9 @@
 
             .btn-container {
                 justify-content: center; /* Tombol tengah di HP */
+                gap: 10px;
+                display: flex;
+                flex-wrap: wrap;
             }
         }
         
