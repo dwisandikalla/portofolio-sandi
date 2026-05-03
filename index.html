@@ -66,17 +66,16 @@
             top: 0;
             width: 100%;
             padding: 1.5rem 5%;
-            background: rgba(10, 10, 10, 0.9);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
-            overflow-x: auto;
-            white-space: nowrap;
             align-items: center;
             z-index: 1000;
             border-bottom: 0.1rem solid rgba(168, 85, 247, 0.2);
         }
+        
         .logo {
             font-size: 2rem;
             font-weight: 700;
@@ -87,9 +86,9 @@
         .nav-logo {
             color: white;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 2rem;
             text-decoration: none;
-            white-space: nowrap;
+            z-index: 1002; /* Agar logo selalu di atas menu */
         }
         
         /* Sembunyikan Checkbox */
@@ -103,10 +102,11 @@
         
         /* Styling Hamburger Menu */
         .hamburger {
-            display: none; /* Sembunyikan di Desktop */
+            display: flex;
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
+            z-index: 1002;
         }
         
         .hamburger span {
@@ -119,13 +119,38 @@
         }
 
         .nav-links {
-            display: flex; 
-            gap: 2.5rem; 
+            position: fixed;
+            top: 0;
+            right: -100%; /* Sembunyi di kanan layar */
+            width: 300px; /* Lebar menu saat terbuka */
+            height: 100vh;
+            background: rgba(15, 15, 15, 0.98);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
             list-style: none;
+            transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+            box-shadow: -10px 0 20px rgba(0,0,0,0.5);
+            z-index: 1001;
             margin: 0;
             padding: 0;
-            overflow-x: auto;
-            white-space: nowrap;
+        }
+
+        #menu-toggle:checked ~ .nav-links {
+            right: 0;
+        }
+        
+        /* Animasi Hamburger ke (X) saat diklik */
+        #menu-toggle:checked ~ .hamburger span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+        #menu-toggle:checked ~ .hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+        #menu-toggle:checked ~ .hamburger span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
         }
 
         .nav-links a {
@@ -134,7 +159,6 @@
             font-size: 1.4rem;
             font-weight: 400; /* Serif tebal, jadi gunakan weight normal */
             transition: color 0.3s;
-
         }
 
         .nav-links a:hover {
@@ -350,7 +374,7 @@
                 position: fixed;
                 top: 0;
                 right: -100%; /* Sembunyikan ke kanan */
-                width: 70%;
+                width: 100%;
                 height: 100vh;
                 background: rgba(15, 15, 15, 0.98);
                 flex-direction: column;
@@ -467,10 +491,7 @@
     <nav>
         <a href="#home" class="nav-logo">Dwi Sandi Kalla</a>
         
-        <!-- Checkbox harus sebelum hamburger dan nav-links -->
-        <input type="checkbox" id="menu-toggle">
-        
-        <label for="menu-toggle" class="hamburger">
+        <input type="checkbox" id="menu-toggle"> <label for="menu-toggle" class="hamburger">
             <span></span>
             <span></span>
             <span></span>
