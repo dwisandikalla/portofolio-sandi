@@ -65,18 +65,23 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1rem 5%;
-            background: rgba(10, 10, 10, 0.8);
+            padding: 1.5rem 0; /* Padding vertikal saja */
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            overflow-x: auto;
-            white-space: nowrap;
-            align-items: center;
             z-index: 1000;
             border-bottom: 0.1rem solid rgba(168, 85, 247, 0.2);
         }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between; /* Logo kiri, Menu kanan */
+            align-items: center;
+        }
+        
         .logo {
             font-size: 2rem;
             font-weight: 700;
@@ -113,20 +118,17 @@
         }
 
         .nav-links {
-            display: flex; 
-            gap: 20px; 
+            display: flex;
+            gap: 3rem;
             list-style: none;
-            overflow-x: auto;
-            white-space: nowrap;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--text-light);
             font-size: 1rem;
-            font-weight: 400; /* Serif tebal, jadi gunakan weight normal */
-            transition: color 0.3s;
-
+            transition: 0.3s;
         }
 
         .nav-links a:hover {
@@ -323,20 +325,35 @@
 
             .hamburger {
                 display: flex; /* Munculkan garis 3 di HP */
+                z-index: 1001;
             }
         
             .nav-links {
                 position: absolute;
-                top: 100%;
-                right: -100%; /* Sembunyikan menu di kanan layar */
-                width: 70%;
-                height: 100vh;
+                top: 100%; /* Muncul tepat di bawah navbar */
+                right: -100%; /* Sembunyikan ke kanan luar layar */
+                width: 250px; /* Lebar menu dropdown */
+                height: auto;
                 background: rgba(20, 20, 20, 0.98);
                 flex-direction: column;
-                align-items: center;
-                padding-top: 50px;
-                transition: 0.5s;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+                padding: 2rem 0;
+                transition: 0.4s ease-in-out;
+                border-left: 1px solid rgba(168, 85, 247, 0.2);
+                border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+                box-shadow: -10px 10px 20px rgba(0,0,0,0.5);
+                gap: 0; /* Gunakan padding pada li agar rapi */
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+        
+            .nav-links a {
+                display: block;
+                padding: 1.5rem;
+                width: 100%;
+                font-size: 1.6rem;
             }
         
             /* Ketika Checkbox dicentang (ikon diklik), menu muncul */
@@ -344,15 +361,15 @@
                 right: 0;
             }
         
-            /* Efek Animasi Hamburger jadi Silang (X) saat diklik */
+            /* Animasi Hamburger ke X */
             #menu-toggle:checked ~ .hamburger span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 6px);
+                transform: translateY(8px) rotate(45deg);
             }
             #menu-toggle:checked ~ .hamburger span:nth-child(2) {
                 opacity: 0;
             }
             #menu-toggle:checked ~ .hamburger span:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -6px);
+                transform: translateY(-8px) rotate(-45deg);
             }
         }
         
@@ -443,25 +460,24 @@
 <body>
 
     <nav>
-        <div class="nav-logo">Dwi Sandi Kalla</div>
-        
-        <!-- Tombol Hamburger -->
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+        <div class="nav-container">
+            <a href="#" class="logo">Dwi Sandi Kalla</a>
+            
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
     
-        <!-- Menu Navigasi -->
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#pendidikan">Pendidikan</a></li>
-            <li><a href="#pengalaman">Pengalaman</a></li>
-            <li><a href="#portofolio">Portofolio</a></li>
-            <li><a href="#sertifikasi">Sertifikasi</a></li>
-            <li><a href="#lainnya">Lainnya</a></li>
-        </ul>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#pendidikan">Pendidikan</a></li>
+                <li><a href="#pengalaman">Pengalaman</a></li>
+                <li><a href="#portofolio">Portofolio</a></li>
+                <li><a href="#sertifikasi">Sertifikasi</a></li>
+            </ul>
+        </div>
     </nav>
 
 
