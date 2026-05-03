@@ -106,40 +106,40 @@
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
-            z-index: 1002;
+            padding: 5px;
         }
         
         .hamburger span {
             display: block;
             width: 25px;
             height: 3px;
-            background: white;
+            background: white; /* Pastikan warna putih agar terlihat */
             border-radius: 2px;
             transition: 0.3s;
         }
 
         .nav-links {
-            position: fixed;
-            top: 0;
-            right: -100%; /* Sembunyi di kanan layar */
-            width: 300px; /* Lebar menu saat terbuka */
-            height: 100vh;
+            position: absolute;
+            top: 100%; /* Muncul tepat di bawah navbar */
+            left: 0;
+            width: 100%;
             background: rgba(15, 15, 15, 0.98);
-            display: flex;
+            display: none; /* Sembunyi secara default */
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 3rem;
             list-style: none;
-            transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-            box-shadow: -10px 0 20px rgba(0,0,0,0.5);
-            z-index: 1001;
+            padding: 2rem 0;
+            border-bottom: 0.1rem solid rgba(168, 85, 247, 0.2);
             margin: 0;
-            padding: 0;
+        }
+
+        .nav-links li {
+            width: 100%;
+            text-align: center;
+            padding: 1.5rem 0;
         }
 
         #menu-toggle:checked ~ .nav-links {
-            right: 0;
+            display: flex;
         }
         
         /* Animasi Hamburger ke (X) saat diklik */
@@ -155,10 +155,11 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-light);
+            color: white;
             font-size: 1.4rem;
             font-weight: 400; /* Serif tebal, jadi gunakan weight normal */
             transition: color 0.3s;
+            display: block;
         }
 
         .nav-links a:hover {
@@ -354,11 +355,7 @@
             }
 
             .hamburger {
-                display: flex; /* Munculkan hamburger di HP */
-                flex-direction: column;
-                gap: 5px;
-                cursor: pointer;
-                z-index: 1001;
+                display: none;
             }
 
             .hamburger span {
@@ -371,19 +368,17 @@
             }
         
             .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%; /* Sembunyikan ke kanan */
-                width: 100%;
-                height: 100vh;
-                background: rgba(15, 15, 15, 0.98);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 3rem;
-                transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-                box-shadow: -10px 0 20px rgba(0,0,0,0.5);
+                display: flex;
+                position: static; /* Kembali ke posisi normal */
+                flex-direction: row;
+                width: auto;
+                background: transparent;
+                border: none;
+                padding: 0;
             }
+
+            .nav-links li { padding: 0; }
+            .nav-links a { font-size: 1.4rem; }
         
             /* Ketika Checkbox dicentang (ikon diklik), menu muncul */
             #menu-toggle:checked ~ .nav-links {
