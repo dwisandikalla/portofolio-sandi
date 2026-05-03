@@ -1,0 +1,692 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <!-- 1. PENGUNCI VIEWPORT: Wajib agar mobile tidak zoom otomatis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dwi Sandi Kalla | Portfolio</title>
+    
+    <!-- 2. PENGUNCI JENIS FONT: Mengambil dari Google Fonts agar SAMA di semua OS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Normalize CSS untuk menyamakan standar antar browser -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <!-- Library AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-bg: #0a0a0a;
+            --gradient: linear-gradient(135deg, #0a0a0a 0%, #2d004d 100%);
+            --accent-purple: #a855f7;
+            --text-light: #f3f4f6;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        /* 3. RESET TOTAL & BOX SIZING */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            scroll-behavior: smooth; 
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* 4. KUNCI BASIS UKURAN (Penyebab utama beda desktop) */
+        html {
+            /* Mengunci 1rem = 10px secara mutlak */
+            font-size: 10px; 
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+            background: var(--primary-bg);
+            background-image: var(--gradient);
+            background-attachment: fixed;
+            color: var(--text-light);
+            /* Gunakan rem, sekarang 1.6rem pasti 16px di semua browser */
+            font-size: 1.6rem; 
+            line-height: 1.8;
+            
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 10%;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 0.1rem solid rgba(168, 85, 247, 0.2);
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 1rem;
+            font-weight: 400; /* Serif tebal, jadi gunakan weight normal */
+            transition: color 0.3s;
+
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-purple);
+        }
+
+        #home {
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            padding: 0 10%;
+            gap: 6rem;
+        }
+
+        .hero-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Aligment teks ke kiri */
+            max-width: 60rem;
+        }
+
+        .profile-img {
+            width: 28rem;
+            height: 28rem;
+            border-radius: 50%;
+            border: 0.4rem solid var(--accent-purple);
+            margin-bottom: 0;
+            object-fit: cover;
+            box-shadow: 0 0 3rem rgba(168, 85, 247, 0.4);
+            flex-shrink: 0;
+        }
+
+        h1 { 
+            font-size: 2.5rem; 
+            margin-bottom: 1.5rem; 
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-desc { 
+            font-size: 1.2rem; 
+            max-width: 65rem; 
+            color: #ccc; 
+            margin-bottom: 3rem;
+            text-align: justify;
+        }
+
+        .btn-container { 
+            display: flex; 
+            gap: 1.2rem; 
+            flex-wrap: wrap; 
+            justify-content: flex-start; 
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            font-size: 1.5rem;
+            border-radius: 0.6rem;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.2s;
+            /* font-family: sans-serif; */
+        }
+
+        .btn-primary { background: var(--accent-purple); color: white; }
+        .btn-outline { border: 0.1rem solid var(--accent-purple); color: var(--accent-purple); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 0.5rem 1.5rem rgba(168, 85, 247, 0.3); }
+
+        section { padding: 10rem 10%; 
+            min-height: 100vh;
+        }
+
+        h2 { font-size: 2.3rem; 
+            margin-bottom: 4rem; 
+            text-align: center; 
+            color: var(--accent-purple); 
+            font-weight: 700;
+        }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); gap: 2.5rem; }
+
+        .card {
+            background: var(--card-bg);
+            padding: 3rem; /* Lebih luas */
+            border-radius: 1.5rem;
+            border: 0.1rem solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+
+        .card h3 { font-size: 1.8rem; 
+            margin-bottom: 1.2rem; 
+            font-weight: 700; 
+            color: var(--text-light);
+        }
+
+        .card p { font-size: 1.5rem; 
+            color: #bbb; 
+            line-height: 1.7;
+        }
+
+        .instansi-logo { width: 6rem; 
+            margin-bottom: 1.5rem; 
+            display: block;
+        }
+
+        footer { font-size: 1.4rem; 
+            text-align: center; 
+            padding: 4rem; 
+            border-top: 1px solid rgba(255,255,255,0.1); 
+            font-weight: 400;
+        }
+
+        /* 7. KUNCI TAMPILAN MOBILE (HP) */
+        @media (max-width: 768px) {
+            #home {
+                flex-direction: column; /* Kembali ke atas-bawah di HP */
+                text-align: center;
+                padding-top: 8rem;
+                gap: 2rem;
+            }
+
+            .hero-text-container {
+                align-items: center; /* Teks tengah di HP */
+                text-align: center;
+            }
+
+            .hero-desc {
+                text-align: center;
+                font-size: 1.6rem;
+            }
+
+            .profile-img {
+                width: 20rem;
+                height: 20rem;
+            }
+
+            .btn-container {
+                justify-content: center; /* Tombol tengah di HP */
+            }
+        }
+        
+        /* Efek Hover Kartu sesuai permintaan sebelumnya */
+        .card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            border: 0.1rem solid rgba(255,255,255,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--accent-purple);
+            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
+        }
+        /* Style judul di dalam kartu */
+        .card h3 {
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+        }
+        /* Menghilangkan garis bawah pada link portofolio */
+        .card-link {
+            text-decoration: none !important; /* Memaksa penghapusan garis bawah */
+            color: inherit; /* Menjaga warna teks agar tidak berubah jadi biru link */
+            display: block; /* Memastikan seluruh area kotak bisa diklik */
+        }
+
+        /* Memastikan teks di dalam kartu juga tidak bergaris bawah saat di-hover */
+        .card-link:hover {
+            text-decoration: none;
+        }
+
+        .card {
+            /* ... kode card Anda yang lain ... */
+            text-decoration: none; 
+        }
+
+        /* Container pembungkus kotak-kotak */
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        /* Kelas untuk kotak/tag */
+        .skill-tag {
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            border-bottom: 3px solid var(--accent-purple);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease; /* Bonus: efek saat kursor mendekat */
+        }
+
+        /* Efek hover agar lebih interaktif */
+        .skill-tag:hover {
+            background: rgba(168, 85, 247, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .main-footer {
+            width: 100%;
+            padding: 15px 0; 
+            text-align: center;
+            border-top: 1px solid rgba(168, 85, 247, 0.2);
+            margin-top: 20px;
+        }
+
+        footer {
+            margin-top: 0; 
+            padding-top: 10px; 
+        }
+
+        .main-footer p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div style="font-size: 1.3rem; font-weight: bold;">Dwi Sandi Kalla</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#pendidikan">Pendidikan</a></li>
+            <li><a href="#pengalaman">Pengalaman</a></li>
+            <li><a href="#portofolio">Portofolio</a></li>
+            <li><a href="#sertifikasi">Sertifikasi</a></li>
+            <li><a href="#lainnya">Lainnya</a></li>
+        </ul>
+    </nav>
+
+
+    <section id="home">
+        <!-- Foto di Kiri dengan animasi fade-right untuk kesan masuk yang halus -->
+        <img src="profile2.png" 
+            class="profile-img" 
+            alt="Dwi Sandi Kalla" 
+            data-aos="fade-right" 
+            data-aos-duration="1500">
+
+        <div class="hero-text-container">
+            <!-- Judul dengan animasi fade-up -->
+            <h1 style="font-size: 2.5rem;" 
+                data-aos="fade-up" 
+                data-aos-duration="1000">
+                Dwi Sandi Kalla
+            </h1>
+
+            <!-- Deskripsi dengan delay agar muncul setelah judul -->
+            <p class="hero-desc" 
+            data-aos="fade-up" 
+            data-aos-delay="300" 
+            data-aos-duration="1000">
+                Lulusan S1-Matematika Universitas Jenderal Soedirman dengan bidang minat statistika dan komputasi.
+                Memiliki pengalaman pada bidang data dan pengembangan model <i>machine learning</i> yang didukung oleh program intensif <i>Coding Camp</i> di Dicoding Indonesia selama 6 bulan.
+                Mampu berpikir kritis, komunikatif, dan kerja tim yang baik.
+                Individu yang adaptif, cepat belajar, <i>detail-oriented</i>, dan berkomitmen untuk terus berkembang menjadi profesional. 
+                Mencari peluang pada bidang data, analis, dan posisi lainnya yang membutuhkan kemampuan analitis dan <i>problem solving</i>.
+            </p>
+
+            <!-- Container tombol dengan delay paling akhir -->
+            <div class="btn-container" 
+                data-aos="fade-up" 
+                data-aos-delay="500" 
+                data-aos-duration="1000">
+                <a href="mailto:dwisandikalla189@gmail.com" class="btn btn-primary">Email Me</a>
+                <a href="https://www.linkedin.com/in/dwi-sandi-kalla" class="btn btn-outline">LinkedIn</a>
+                <a href="https://wa.me/6289512056807" class="btn btn-outline">WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="pendidikan">
+        <!-- Judul muncul perlahan -->
+        <h2 style="font-size: 2.3rem; margin-bottom: 3.5rem;" data-aos="fade">Pendidikan & Organisasi</h2>
+        
+        <div class="grid">
+            <!-- Kartu utama muncul perlahan -->
+            <div class="card" data-aos="fade" data-aos-duration="1200">
+                <!-- Bagian Pendidikan -->
+                <div style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 1.5rem;">
+                    <img src="Logo-Unsoed.png" alt="Logo Unsoed" style="width: 80px; height: auto;" class="instansi-logo" data-aos="fade" data-aos-delay="200">
+                    
+                    <div style="flex-grow: 1;" data-aos="fade" data-aos-delay="300">
+                        <h3 style="font-size: 1.8rem; color: var(--accent-purple); margin: 0;">Universitas Jenderal Soedirman</h3>
+                        <p style="font-size: 1.3rem; margin: 5px 0 0 0; display: flex; justify-content: space-between; align-items: center;">
+                            <span>S1-Matematika</span>
+                            <span style="color: #ccc; font-size: 1.2rem;">Agustus 2022 - April 2026</span>
+                        </p>
+                        <p style="font-size: 1.3rem; margin: 2px 0 0 0;">IPK : 3.42/4.00</p>
+                        
+                        <div style="margin-top: 15px; width: 100%; border: 1px solid #444; border-radius: 8px; overflow: hidden;" data-aos="fade" data-aos-delay="400">
+                            <iframe 
+                                src="https://drive.google.com/file/d/1fXIKpI079RKbX7edJ1gf8ALjKCnHKJ2D/preview" 
+                                width="100%" 
+                                height="400px" 
+                                allow="autoplay"
+                                style="border: none; display: block;">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            
+                <hr style="margin: 1rem 0; opacity: 0.2;">
+                
+                <!-- Bagian Organisasi & Kepanitiaan -->
+                <h3 style="font-size: 1.8rem; color: var(--accent-purple); margin-top: 1rem;" data-aos="fade">Organisasi & Kepanitiaan:</h3>
+            
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 1rem;" data-aos="fade" data-aos-delay="200">
+                    <p style="font-size: 1.3rem; font-weight: bold; flex: 1; margin: 0;">Kepala Divisi Pengembangan Sumber Daya Anggota | UKM Penalaran Riset MIPA</p>
+                    <span style="color: #ccc; font-size: 1rem; margin-left: 1.5rem; white-space: nowrap;">Februari 2024 - Desember 2024</span>
+                </div>
+                <ul style="font-size: 1rem; margin-left: 1.2rem; margin-top: 0.5rem;" data-aos="fade" data-aos-delay="300">
+                    <li>Memimpin dan menciptakan strategi pengembangan untuk meningkatkan kapasitas, <i>soft skill</i>, dan <i>hard skill</i> anggota dan pengurus UKM PR MIPA</li>
+                    <li>Merancang program kerja pengembangan <i>skill</i> dan branding UKM PR MIPA</li>
+                    <li>Penghubung komunikasi antar divisi, ketua umum, dan organisasi lainnya di FMIPA</li>
+                </ul>
+                
+                <br>
+
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 0.5rem;" data-aos="fade" data-aos-delay="400">
+                    <p style="font-size: 1.3rem; font-weight: bold; flex: 1; margin: 0;">Ketua Pelaksana | Magang, <i>Expo</i>, dan <i>Open House</i> UKM Penalaran Riset MIPA</p>
+                    <span style="color: #ccc; font-size: 1rem; margin-left: 1.5rem; white-space: nowrap;">April 2023 - September 2023</span>
+                </div>
+                <ul style="font-size: 1rem; margin-left: 1.2rem; margin-top: 0.5rem;" data-aos="fade" data-aos-delay="500">
+                    <li>Memimpin dan memastikan panitia memahami peran dan tanggung jawabnya masing-masing.</li>
+                    <li>Menjalin komunikasi dengan berbagai pihak di FMIPA.</li>
+                    <li>Membantu penanganan beberapa tantangan yang muncul ketika acara berjalan.</li>
+                </ul>
+                
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; justify-content: center;">
+                    <div style="flex: 1; min-width: 300px; border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 12px; overflow: hidden; background: #1a1a1a;" data-aos="fade" data-aos-delay="600">
+                        <iframe 
+                            src="https://drive.google.com/file/d/1cp7s7UKZXpFci7QYKetC6Su2LCxd6X6n/preview" 
+                            width="100%" 
+                            height="400px" 
+                            allow="autoplay"
+                            style="border: none; display: block;">
+                        </iframe>
+                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: #ccc; border-top: 1px solid rgba(168, 85, 247, 0.2);">
+                            Surat Tugas Pengurus PR MIPA
+                        </p>
+                    </div>
+
+                    <div style="flex: 1; min-width: 300px; border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 12px; overflow: hidden; background: #1a1a1a;" data-aos="fade" data-aos-delay="700">
+                        <iframe 
+                            src="https://drive.google.com/file/d/1ilzR592OE1ofwatpGuhn4I6_uOViKNri/preview" 
+                            width="100%" 
+                            height="400px" 
+                            allow="autoplay"
+                            style="border: none; display: block;">
+                        </iframe>
+                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: #ccc; border-top: 1px solid rgba(168, 85, 247, 0.2);">
+                            Sertifikat Magang, <i>Expo</i>, dan <i>Open House</i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pengalaman">
+        <!-- Judul Section muncul perlahan -->
+        <h2 style="font-size: 2.3rem" data-aos="fade" data-aos-duration="1000">Pengalaman Kerja</h2>
+        
+        <div class="grid">
+            <!-- Kartu Pertama: Internship -->
+            <div class="card" style="display: flex; flex-direction: column; gap: 1rem;" data-aos="fade" data-aos-duration="1200" data-aos-delay="200">
+                <div>
+                    <h3 style="font-size: 1.8rem; color: var(--accent-purple); margin: 0;">Internship - Metrologi Legal</h3>
+                    <p style="font-size: 1.3rem; margin: 5px 0; color:white;">Dinas Perindustrian dan Perdagangan Banyumas</p>
+                    <p style="font-size: 1rem; color: #aaa; text-align: justify;">Bertanggung jawab dalam mendukung pelaksanaan proses tera dan tera ulang alat ukur untuk memastikan kepatuhan terhadap standar nasional. 
+                        Saya mengelola administrasi layanan, sertifikasi, pencatatan transaksi, serta data transaksi secara sistematis guna meningkatkan efisiensi operasional. 
+                        Selain itu, saya berperan aktif dalam berkoordinasi teknis di lapangan untuk menyelesaikan kendala alat ukur dengan mengedepankan prosedur operasional dan standar kualitas metrologi legal.</p>
+                </div>
+                
+                <!-- Dokumen Drive Internship muncul sedikit lebih lambat -->
+                <div style="width: 100%; border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 10px; overflow: hidden; background: #1a1a1a;" data-aos="fade" data-aos-delay="400">
+                    <iframe 
+                        src="https://drive.google.com/file/d/10KRvOCWj82zSMIgBTqrUSXje5smkAZ9X/preview" 
+                        width="100%" 
+                        height="350px" 
+                        allow="autoplay"
+                        style="border: none; display: block;">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Kartu Kedua: Asisten Praktikum -->
+            <div class="card" style="display: flex; flex-direction: column; gap: 1rem;" data-aos="fade" data-aos-duration="1200" data-aos-delay="400">
+                <div>
+                    <h3 style="font-size: 1.8rem; color: var(--accent-purple); margin: 0;">Asisten Praktikum</h3>
+                    <p style="font-size: 1.3rem; margin: 5px 0; color:white;">Fakultas MIPA Unsoed</p>
+                    <p style="font-size: 1rem; color: #aaa; text-align: justify;">Mengampu Praktikum dari tiga mata kuliah selama 3 semester berturut-turut, diantaranya Metode Statistika I (Agustus-Desember 2023),Algoritma Pemrograman (Februari-Juni 2024), Persamaan Diferensial Biasa (Agustus-Desember 2024).
+                        Saya mengajar lebih dari 50 mahasiswa dalam satu kelas per mata kuliah dan melakukan evaluasi laporan praktikum serta evaluasi belajar mahasiswa praktikum. 
+                        Saya berhasil menerapkan kemampuan dan keterampilan dalam mengajar, pemecahan masalah, dan bekerja dalam tim, serta yang paling penting adalah membentuk komunikasi dua arah yang baik dengan praktikan.
+                    </p>
+                    <br>
+                    <p style="font-size: 1.3rem; color:#aaa; margin: 5px 0;">Surat Tugas</p>
+                    <ul style="font-size: 1rem; margin-left: 1.2rem; margin-top: 0.5rem;">
+                        <li><a href="https://drive.google.com/file/d/17H8lqezJSdR-HjExN3JFWO_QrJV1zfj4/view?usp=sharing"style= "color: #aaa;">ST Asisten Praktikum Metode Statistika 1</a></li>
+                        <li><a href="https://drive.google.com/file/d/1DGoNDInUrppE-KVhI8n3g4J0yH05DiLL/view?usp=sharing"style= "color: #aaa;">ST Asisten Praktikum Algoritma & Pemrograman</a></li>
+                        <li><a href="https://drive.google.com/file/d/1agZS5i6hEY0w_eh7fgIpnyEqZNQyC7y8/view?usp=sharing"style= "color: #aaa;">ST Asisten Praktikum Persamaan Diferensial Biasa</a></li>
+                    </ul>
+                </div>
+
+                <!-- Foto Dokumentasi muncul paling akhir -->
+                <div style="display: flex; gap: 0.8rem;" data-aos="fade" data-aos-delay="600">
+                    <div style="flex: 1;">
+                        <img src="foto-asisten1.jpeg" alt="Kegiatan Praktikum 1" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(168, 85, 247, 0.4);">
+                    </div>
+                    <div style="flex: 1;">
+                        <img src="foto-asisten2.jpeg" alt="Kegiatan Praktikum 2" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(168, 85, 247, 0.4);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portofolio">
+        <!-- Judul Portofolio muncul perlahan -->
+        <h2 style="font-size: 2.3rem" data-aos="fade" data-aos-duration="1000">Portofolio Proyek</h2>
+        <div class="grid">
+            <!-- Kotak 1: Proyek Skripsi IHSG BiLSTM -->
+            <a href="ihsg-detail.html" class="card-link" data-aos="fade" data-aos-duration="1200" data-aos-delay="200">
+                <div class="card">
+                    <h3 style="font-size: 1.8rem; color: var(--accent-purple); margin: 0;">Prediksi IHSG (IDX Composite) dengan BiLSTM</h3>
+                    <p style="font-size: 1.2rem; text-align: justify;">Proyek ini merupakan hasil dari tugas akhir (skripsi) tentang implementasi model <i>Deep Learning</i> yaitu BiLSTM dalam peramalan <i>(forecasting)</i> harga penutupan harian Indeks Harga Saham Gabungan (IHSG). 
+                        Fokus utama proyek tugas akhir ini adalah mengevaluasi keakuratan model dalam menangkap volatilitas pasar modal di Indonesia.
+                        Pada proyek ini dilakukan pembagian <i>data splitting</i> sebanyak 3 skenario/kategori dan 
+                        pelatihan dilakukan sebanyak 20 kali pada setiap kategori untuk mengetahui kestabilan model. Evaluasi yang digunakan adalah <i>Mean Percentage Error</i> (MAPE) dan didapatkan nilai MAPE terkecil adalah <strong>0,799345%</strong>.</p>
+                    <br><br>
+                    <div class="detail-text" style="font-size: 1.5rem; text-align: right;">
+                        <strong>Detail Portofolio click here </strong><span class="arrow-symbol">&#10217;</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="sertifikasi">
+        <!-- Judul Sertifikasi muncul perlahan -->
+        <h2 style="font-size: 2.3rem" data-aos="fade" data-aos-duration="1000">Pelatihan & Sertifikasi</h2>
+        <div class="grid">
+            <!-- Kartu Sertifikasi Dicoding -->
+            <div class="card" data-aos="fade" data-aos-duration="1200" data-aos-delay="200">
+                <h3 style="font-size: 1.8rem; color: var(--accent-purple); margin: 0.5;">Machine Learning Engineering Cohort</h3>
+                <p style="font-size: 1.3rem; text-align: justify; color: white;">Dicoding Indonesia</p>
+                <p style="font-size: 1.1rem; text-align: justify; color: #aaa;">Program intensif 6 bulan mengenai pelatihan dalam pengembangan model <i>Machine Learning</i> pada tahun 2025.
+                    Program ini dilaksanakan oleh PT. Dicoding Indonesia dan memberikan pelatihan sesuai dengan standar yang dibutuhkan industri saat ini.
+                    Program ini juga membekali pesertanya seputar <i>Machine Learning</i> baik <i>supervised learning</i> maupun <i>unsupervised learning</i>. 
+                    Selama mengikuti program ini, saya dapat menyelesaikan lebih dari 6 proyek <i>machine learning</i>.
+                    Proyek-proyek yang ada diselesaikan dengan menggunakan bahasa pemrograman python. Selain kemampuan pada bidang <i>machine learning</i>, 
+                    peserta juga dibekali dengan kemampuan pada bidang <i>soft skill</i> dan literasi keuangan.
+                </p>
+
+                <!-- Iframe sertifikat muncul perlahan setelah teks -->
+                <iframe src="https://drive.google.com/file/d/1RjQwKb4N9_5TNgnzfyOXJrVSBeIBhpQD/preview" 
+                        width="100%" 
+                        height="500" 
+                        style="border: 1px solid #444; border-radius: 8px;" 
+                        allow="autoplay" 
+                        data-aos="fade" 
+                        data-aos-delay="400">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="lainnya">
+        <h2 style="font-size: 2.3rem" data-aos="fade" data-aos-duration="1000">Lainnya</h2>
+        <div class="grid">
+            <div class="card" data-aos="fade" data-aos-duration="1200">
+                <h3 style="font-size: 1.8rem; color: var(--accent-purple); margin: 0.5;">Perolehan Penghargaan</h3>
+                <p style="font-size: 1.3rem; text-align: justify; color: white;">Lomba Makalah dan Poster Kalkulus KAMINDO</p>
+                <p style="font-size: 1.1rem; text-align: justify; color: #aaa;">Peraih Medali Perunggu dalam bidang makalah pada tahun <strong>2023</strong> yang diselenggarakan oleh Komunitas Analisis Matematika Indonesia (KAMINDO) dan bertempat di Universitas Sebelas Maret (UNS).</p>
+
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; justify-content: center;">
+                    <!-- Dokumentasi 2023 -->
+                    <div style="width: 30%; min-width: 200px;" data-aos="fade" data-aos-delay="200">
+                        <iframe src="https://drive.google.com/file/d/1YcycmpWlpclQYrorvK4mZFvpLDkfcXih/preview" width="100%" height="200" style="border: 1px solid #444; border-radius: 8px;" allow="autoplay"></iframe>
+                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: #ccc; border-top: 1px solid rgba(168, 85, 247, 0.2);">Dokumentasi Lomba</p>
+                    </div>
+
+                    <div style="width: 30%; min-width: 200px;" data-aos="fade" data-aos-delay="400">
+                        <iframe src="https://drive.google.com/file/d/1kRJ-F5XldMc_NPJKkCmydG0oPE4hm4vh/preview" width="100%" height="200" style="border: 1px solid #444; border-radius: 8px;" allow="autoplay"></iframe>
+                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: #ccc; border-top: 1px solid rgba(168, 85, 247, 0.2);">Sertifikat Pemenang</p>
+                    </div>
+
+                    <div style="width: 30%; min-width: 200px;" data-aos="fade" data-aos-delay="600">
+                        <iframe src="https://drive.google.com/file/d/1xGEOOyAXQZWOdaKNNI4H3l169ooXQt9h/preview" width="100%" height="200" style="border: 1px solid #444; border-radius: 8px;" allow="autoplay"></iframe>
+                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: #ccc; border-top: 1px solid rgba(168, 85, 247, 0.2);">Karya Lomba</p>
+                    </div>
+                </div>
+
+                <hr style="margin: 1rem 0; opacity: 0.5;">
+
+                <p style="font-size: 1.3rem; text-align: justify; color: white;" data-aos="fade">Lomba Makalah dan Poster Kalkulus KAMINDO</p>
+                <p style="font-size: 1.1rem; text-align: justify; color: #aaa;" data-aos="fade">Peraih Medali Perak dalam bidang lomba poster pada tahun <strong>2024</strong> yang diselenggarakan oleh Komunitas Analisis Matematika Indonesia (KAMINDO) dan bertempat di Institut Teknologi Bandung (ITB).</p>
+
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; justify-content: center;">
+                    <!-- Dokumentasi 2024 -->
+                    <div style="width: 30%; min-width: 200px;" data-aos="fade" data-aos-delay="200">
+                        <iframe src="https://drive.google.com/file/d/1ijgRH_5EmqYDP5WoqQJzv0BlN0Y20k1G/preview" width="100%" height="200" style="border: 1px solid #444; border-radius: 8px;" allow="autoplay"></iframe>
+                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: #ccc; border-top: 1px solid rgba(168, 85, 247, 0.2);">Dokumentasi Lomba</p>
+                    </div>
+
+                    <div style="width: 30%; min-width: 200px;" data-aos="fade" data-aos-delay="400">
+                        <iframe src="https://drive.google.com/file/d/1AF10jT9E4LecLEgK_4u75ftr1_gTkpIj/preview" width="100%" height="200" style="border: 1px solid #444; border-radius: 8px;" allow="autoplay"></iframe>
+                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: #ccc; border-top: 1px solid rgba(168, 85, 247, 0.2);">Sertifikat Pemenang</p>
+                    </div>
+
+                    <div style="width: 30%; min-width: 200px;" data-aos="fade" data-aos-delay="600">
+                        <iframe src="https://drive.google.com/file/d/1dk3kCc6wa6XuTSPDLlI1x9RnZyVYaWA7/preview" width="100%" height="200" style="border: 1px solid #444; border-radius: 8px;" allow="autoplay"></iframe>
+                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: #ccc; border-top: 1px solid rgba(168, 85, 247, 0.2);">Karya Lomba</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Soft Skill -->
+    <section id="lainnya" style="padding-top: 0; margin-top: -50px; margin-bottom: 100px; padding-bottom: 0; min-height: auto !important;">
+        <div class="grid" style="margin-top: 0; padding-top: 0; min-height: auto !important;">
+            <div class="card" data-aos="fade" data-aos-duration="1200">
+                <h3 style="font-size: 1.8rem; color: var(--accent-purple); margin: 0.5;"><i>Soft Skill</i></h3>
+                <div class="tag-container">
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="100">Analitis</div>
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="150">Berpikir Kritis</div>
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="200">Detail-oriented</div>
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="250">Problem Solving</div>
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="300">Kepemimpinan</div>
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="350">Komunikatif</div>
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="400">Kerja Tim</div>
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="450">Adaptif</div>
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="500">Inovatif</div>
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="550">Continouse Learning</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Hard Skill -->
+    <section id="lainnya" style="padding-top: 0; margin-top: -50px; margin-bottom: 100px; padding-bottom: 0; min-height: auto !important;">
+        <div class="grid" style="margin-top: 0; padding-top: 0; min-height: auto !important;">
+            <div class="card" data-aos="fade" data-aos-duration="1200">
+                <h3 style="font-size: 1.8rem; color: var(--accent-purple); margin: 0.5;"><i>Hard Skill</i></h3>
+                <div class="tag-container">
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="100">Microsoft Office (Word, Excel, PowerPoint)</div>
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="150">Python</div>
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="200">SPSS</div>
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="250">Minitab</div>
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="300">Analisis Data</div>
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="350">Pemodelan Matematika</div>
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="400">Data Scient</div>
+                    <div class="skill-tag" data-aos="fade" data-aos-delay="450">Pemodelan Machine Learning</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="margin-top: 0; padding: 10px 0; border-top: 1px solid rgba(168, 85, 247, 0.2); text-align: center;">
+        <p style="margin: 0; font-size: 0.85rem; color: #aaa;">
+            &copy; Portofolio Dwi Sandi Kalla - 2026.
+        </p>
+    </footer>
+
+<!-- Library AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+    // Inisialisasi AOS dengan settingan profesional
+    AOS.init({
+        duration: 1200,      // Durasi animasi (1.2 detik)
+        once: true,          // Animasi hanya jalan sekali saat scroll ke bawah (disarankan untuk portofolio)
+        offset: 150,         // Animasi dimulai saat elemen 150px muncul di layar
+        easing: 'ease-in-out-sine', // Gerakan yang halus
+        disable: 'mobile',   // Opsional: ganti ke false jika ingin animasi aktif di mobile
+    });
+
+    // Menghindari masalah layout bergeser saat animasi loading
+    window.addEventListener('load', AOS.refresh);
+</script>
+
+</body>
+</html>

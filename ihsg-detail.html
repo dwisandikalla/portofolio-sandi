@@ -1,0 +1,587 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Portofolio - [Nama Proyek]</title>
+    <style>
+        :root {
+            --bg-color: #0d0216;      /* Hitam pekat dengan tint ungu */
+            --card-bg: #1a0a2e;       /* Ungu gelap untuk kontainer */
+            --accent-primary: #9d4edd; /* Ungu terang */
+            --accent-secondary: #c77dff;/* Ungu muda */
+            --text-main: #e0e0e0;
+            --text-muted: #b39ddb;
+        }
+
+        html {
+            /* Mengunci 1rem = 10px secara mutlak agar tidak terkena auto-zoom browser */
+            font-size: 10px; 
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            /* Ganti ke Merriweather sesuai permintaan */
+            font-family: 'Merriweather', serif;
+            margin: 0;
+            padding: 0;
+            /* Menggunakan rem yang sekarang sudah terkunci (1.6rem = 16px) */
+            font-size: 1.6rem; 
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* Navigasi / Tombol Kembali */
+        .back-link {
+            text-decoration: none;
+            color: var(--accent-secondary);
+            font-size: 1.4rem; /* 14px */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        /* Header Proyek */
+        header {
+            border-bottom: 2px solid var(--card-bg);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: var(--accent-primary);
+            font-size: 3rem; /* Ukuran font terkunci */
+            margin: 0;
+            letter-spacing: -1px;
+            font-weight: 700;
+        }
+
+        .badge-container {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--card-bg);
+            border: 1px solid var(--accent-primary);
+            color: var(--accent-secondary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Section Styling */
+        section {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(157, 78, 221, 0.1);
+        }
+
+        h2 {
+            color: var(--accent-secondary);
+            font-size: 2.5rem; /* Ukuran font terkunci */
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: "";
+            width: 4px;
+            height: 20px;
+            background: var(--accent-primary);
+            display: inline-block;
+            border-radius: 2px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .tech-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .tech-item {
+            background: rgba(255,255,255,0.05);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-primary);
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, #3c096c, #240046);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent-secondary);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #5a5a5a;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            html {
+                /* Menyesuaikan skala global untuk layar kecil */
+                font-size: 9px; 
+            }
+
+            .container {
+                padding: 30px 15px;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .container-gambar {
+                flex-direction: column; /* Gambar berjejer ke bawah di HP */
+                gap: 15px;
+            }
+        }
+
+       /* Pengaturan dasar tabel */
+        table {
+            width: auto;                /* Lebar otomatis mengikuti teks */
+            margin: 20px auto;          /* Tengah secara horizontal */
+            border-collapse: collapse;
+            font-family: "Times New Roman", Times, serif;
+            color: white;               /* Warna teks putih sesuai gambar baru */
+        }
+
+        /* Header */
+        thead th {
+            border-top: 2px solid white;    /* Garis atas tebal */
+            border-bottom: 1px solid white; /* Garis bawah tipis */
+            padding: 4px 10px;             /* Jarak kiri-kanan diperlebar */
+            font-weight: normal;
+        }
+
+        /* Isi data */
+        td {
+            padding: 2px 8px;
+            text-align: center;
+        }
+
+        /* Simbol titik tiga */
+        .dots td {
+            padding: 10px 0;
+            font-size: 1.2em;
+        }
+
+        /* Garis paling bawah */
+        tbody tr:last-child td {
+            border-bottom: 2px solid white;
+        }
+        /* Mengatur kontainer agar gambarnya berada di tengah */
+        .visualisasi-grafik-container {
+            text-align: center; /* Mengetengahkan gambar secara horizontal */
+            margin-top: 20px;   /* Memberi jarak atas agar tidak mepet dengan teks */
+            padding: 10px;      /* Memberi sedikit ruang antara gambar dan tepi kotak ungu */
+        }
+
+        /* Mengatur ukuran gambar di dalam kontainer */
+        .visualisasi-grafik-container img {
+            /* --- INI KUNCINYA --- */
+            max-width: 100%;    /* Gambar tidak akan lebih lebar dari lebar kontainer (kotak ungu) */
+            height: auto;       /* Proporsi gambar (tinggi) akan menyesuaikan secara otomatis */
+            /* -------------------- */
+            
+            /* Opsional: Membuat gambar sedikit lebih bagus */
+            border-radius: 5px; /* Membuat sudut gambar sedikit melengkung */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Menambahkan garis tepi tipis agar terlihat elegan */
+        }
+        /* Kontainer utama untuk membungkus 3 gambar */
+        .container-gambar {
+            display: flex;
+            justify-content: space-between; /* Memberi jarak merata di antara gambar */
+            gap: 20px;                      /* Jarak spesifik antar gambar */
+            margin: 20px 0;
+        }
+
+        /* Mengatur setiap item (gambar + judul) */
+        .item-gambar {
+            flex: 1;           /* Membuat setiap item memiliki lebar yang sama */
+            text-align: center; /* Mengetengahkan teks judul */
+            margin: 0;         /* Menghilangkan margin bawaan browser */
+        }
+
+        /* Mengatur ukuran gambar agar tidak berantakan */
+        .item-gambar img {
+            width: 100%;       /* Gambar memenuhi lebar item */
+            height: auto;      /* Menjaga proporsi gambar */
+            border-radius: 8px; /* Opsional: sudut melengkung */
+            border: 1px solid #ddd;
+        }
+
+        /* Mengatur teks judul di bawah gambar */
+        .item-gambar figcaption {
+            margin-top: 10px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            color: white;      /* Sesuaikan dengan tema gelap Anda */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Navigasi -->
+        <a href="index.html" class="back-link">← Kembali ke Utama</a>
+
+        <!-- Header -->
+        <header>
+            <h1 style="font-size: 2.5rem;">Prediksi IHSG (IDX Composite)</h1>
+            <div class="badge-container">
+                <span class="badge" style="font-size: 1rem;">Deep Learning</span>
+                <span class="badge" style="font-size: 1rem;">Machine Learning</span>
+                <span class="badge" style="font-size: 1rem;">Finance</span>
+                <span class="badge" style="font-size: 1rem;">Time Series</span>
+                <span class="badge" style="font-size: 1rem;">BiLSTM</span>
+            </div>
+        </header>
+
+        <!-- Deskripsi -->
+        <section>
+            <h2 style="font-size: 2rem;">Deskripsi Proyek</h2>
+            <p style="font-size: 1.2rem; color:white; text-align: justify;">Proyek ini merupakan hasil dari tugas akhir (skripsi) tentang implementasi model <i>Deep Learning</i> yaitu BiLSTM dalam peramalan <i>(forecasting)</i> harga penutupan harian Indeks Harga Saham Gabungan (IHSG). 
+                Fokus utama proyek tugas akhir ini adalah mengevaluasi keakuratan model dalam menangkap volatilitas pasar modal di Indonesia.
+                Pada proyek ini dilakukan pembagian <i>data splitting</i> sebanyak 3 skenario/kategori, diantaranya Kategori I (60:10:30), Kategori II (70:10:20), dan Kategori III (90:10:10).
+                Proyek ini juga melakukan <i>hyperparameter tuning</i> dengan menggunakan metode <i>random search</i> yang memiliki konfigurasi <i>hyperparameter</i> diantaranya <i>neuron, batch size, learning rate, epoch, dan drop out.</i>
+                Pelatihan dilakukan sebanyak 20 kali pada setiap kategori untuk mengetahui kestabilan model. Evaluasi yang digunakan adalah <i>Mean Percentage Error</i> (MAPE) dan didapatkan nilai MAPE terkecil adalah <strong>0,799345%</strong>.
+            </p>
+        </section>
+
+        <!-- Teknologi -->
+        <section>
+            <h2 style="font-size: 2rem;">Teknologi & Algoritma</h2>
+            <p style="font-size: 1.2rem; color:white;">Menggunakan pendekatan <strong><i>Bidirectional Long Short-Term Memory</i> (BiLSTM)</strong> yang memungkinkan model belajar dari urutan data masa lalu dan masa depan secara bersamaan.</p>
+            <div class="tech-list" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                <div class="tech-item" style="font-size: 1rem;">Python</div>
+                <div class="tech-item" style="font-size: 1rem;">TensorFlow / Keras</div>
+                <div class="tech-item" style="font-size: 1rem;">Pandas & NumPy</div>
+                <div class="tech-item" style="font-size: 1rem;">Scikit-Learn</div>
+                <div class="tech-item" style="font-size: 1rem;">Pemodelan Matematika</div>
+                <div class="tech-item" style="font-size: 1rem;">Aljabar Linear</div>
+            </div>
+        </section>
+
+        <!-- Hasil -->
+        <section>
+            <h2 style="font-size: 2rem;">Hasil Analisis</h2>
+            <h3>Data yang Digunakan</h3>
+            <div class="result-box">
+                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">Data yang digunakan untuk proyek ini adalah data harga penutupan IHSG yang diperoleh dari <a href="//finance.yahoo.com/quote/%5EJKSE/history/" style="color: white;">Yahoo Finance</a>
+                    dari tanggal 30 September 2019 sampai dengan 30 September 2025. Data harga penutupan IHSG terjadi pada tabel di bawah ini</p>
+                <div style="width: 100%; border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 10px; overflow: hidden; background: #1a1a1a; margin-top: 1.5rem;">
+                    <iframe 
+                        src="https://docs.google.com/spreadsheets/d/1m7MVidqyD3qnJXGqlgQy-mZL7UsRK6AP/preview" 
+                        width="100%" 
+                        height="300px" 
+                        style="border: none; display: block;">
+                    </iframe>
+                </div>
+                <p style="font-size: 0.8rem; color: #aaa; margin-top: 8px; text-align: center;">
+                    <i>Tabel: Data Lengkap</i>
+                </p>
+            </div>
+
+            <h3>Statistika Deskriptif</h3>
+            <div class="result-box">
+                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">Statistika deskriptif dari data tersebut tersaji dalam tabel di bawah ini:.</p>
+                                <!DOCTYPE html>
+                <html lang="id">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Statistika Deskriptif</title>
+                    <!-- Menghubungkan ke file CSS -->
+                    <link rel="stylesheet" href="style.css">
+                </head>
+                <body>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Statistika Deskriptif</th>
+                                <th>Harga Penutupan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jumlah data</td>
+                                <td>1.448</td>
+                            </tr>
+                            <tr>
+                                <td>Rata-rata</td>
+                                <td>6.572,458224</td>
+                            </tr>
+                            <tr>
+                                <td>Standar deviasi</td>
+                                <td>770,836652</td>
+                            </tr>
+                            <tr>
+                                <td>Median</td>
+                                <td>6.793,089600</td>
+                            </tr>
+                            <tr>
+                                <td>Nilai minimum</td>
+                                <td>3.937,632080</td>
+                            </tr>
+                            <tr>
+                                <td>Nilai maksimum</td>
+                                <td>8.126,558105</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </body>
+                </html>
+            </div>
+
+            <h3>Visualisasi Data Harga Penutupan IHSG</h3>
+            <div class="result-box">
+                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">Visualisasi bertujuan untuk mengetahui pola pergerakan harga penutupan IHSG pada periode observasi.</p>
+                <div class="visualisasi-grafik-container">
+                    <img src="pic-proyek1/1.png" alt="Visualisasi Harga IHSG">
+                </div>
+            </div>
+            
+            <h3><i>Sliding Window</i> dan Visualisasi <i>Data splitting</i> Harga Penutupan IHSG</h3>
+            <div class="result-box">
+                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;"><i>Sliding window</i> merupakan proses membagi data ke dalam beberapa sequence dan memiliki panjang sequence yang sama. 
+                Pada proyek ini besar sequence yang digunakan adalah 30, <i>Sliding window</i> bekerja dengan cara menggeser satu persatu data dari awal hingga akhir sampai membentuk sequence. Sedangkan,
+                Visualisasi ini dikhususkan bertujuan untuk mengetahui skala pembagian data harga penutupan IHSG dari 3 kategori.</p>
+                <div class="container-gambar">
+                    <!-- Gambar Pertama -->
+                    <figure class="item-gambar">
+                        <img src="pic-proyek1/3.png" alt="Deskripsi Gambar 1">
+                        <figcaption style="color:white;">Kategori I (60:10:30)</figcaption>
+                    </figure>
+
+                    <!-- Gambar Kedua -->
+                    <figure class="item-gambar">
+                        <img src="pic-proyek1/4.png" alt="Deskripsi Gambar 2">
+                        <figcaption style="color:white;">Kategori II (70:10:20)</figcaption>
+                    </figure>
+
+                    <!-- Gambar Ketiga -->
+                    <figure class="item-gambar">
+                        <img src="pic-proyek1/2.png" alt="Deskripsi Gambar 3">
+                        <figcaption style="color:white;">Kategori III (80:10:10)</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <h3><i>Hyperparameter Tuning</i></h3>
+            <div class="result-box">
+                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;"><i>Hyperparameter Tuning</i> dilakukan untuk mengetahui kombinasi dari hyperparameter terbaik. 
+                    Ruang pencarian <i>hyperparameter</i> yang digunakan tersaji pada tabel di bawah ini:</p>
+                <!DOCTYPE html>
+                <html lang="id">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Hyperparameter</title>
+                    <!-- Menghubungkan ke file CSS -->
+                    <link rel="stylesheet" href="style.css">
+                </head>
+                <body>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Jenis <i>Hyperparameter</i></th>
+                                <th>Ruang Pencarian</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i>Neuron</i></td>
+                                <td>5, 10, 15, 20, 25</td>
+                            </tr>
+                            <tr>
+                                <td><i>Dropout</i></td>
+                                <td>0,1; 0,2; 0,3; 0,4; 0,5</td>
+                            </tr>
+                            <tr>
+                                <td><i>Learning rate</i></td>
+                                <td>0,01; 0,001; 0,0001; 0,00001; 0,000001</td>
+                            </tr>
+                            <tr>
+                                <td><i>Batch size</i></td>
+                                <td>4, 16, 32, 64, 128</td>
+                            </tr>
+                            <tr>
+                                <td><i>Epoch</i>></td>
+                                <td>50, 100, 150, 200, 250</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </body>
+                </html>
+                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">Setelah dilakukan sebanyak 50 iterasi dengan metode <i>Random Search</i> pada masing-masing kategori
+                    , diperoleh <i>hyperparameter</i> terbaik yang tersaji pada tabel di bawah ini:</p>
+                <!DOCTYPE html>
+                <html lang="id">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Hasil Hyperparameter</title>
+                    <!-- Menghubungkan ke file CSS -->
+                    <link rel="stylesheet" href="style.css">
+                </head>
+                <body>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Kategori</th>
+                                <th><i>Neuron</i></th>
+                                <th><i>Dropout</i></th>
+                                <th><i>Learning rate</i></th>
+                                <th><i>Batch size</i></th>
+                                <th><i>Epoch</i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>I</td>
+                                <td>15</td>
+                                <td>0,1</td>
+                                <td>0,01</td>
+                                <td>64</td>
+                                <td>150</td>
+                            </tr>
+                            <tr>
+                                <td>II</td>
+                                <td>20</td>
+                                <td>0,1</td>
+                                <td>0,01</td>
+                                <td>16</td>
+                                <td>200</td>
+                            </tr>
+                            <tr>
+                                <td>II</td>
+                                <td>20</td>
+                                <td>0,1</td>
+                                <td>0,01</td>
+                                <td>16</td>
+                                <td>200</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </body>
+                </html>
+            </div>
+
+            <h3>Training dan Evaluasi</h3>
+            <div class="result-box">
+                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">Training dilakukan untuk melatih model BiLSTM dengan kombinasi <i>hyperparameter</i> terbaik yang terbentuk.
+                <i>Training</i> model dilakukan sebanyak 20 kali yang bertujuan untuk mengetahui stabilitas model dengan cara mengukur rata-rata dan standar deviasi pada setiap kategori.
+                Pada setiap kategori dilakukan 20 kali <i>training</i> sehingga akan terbentuk 20 model pada setiap kategori. Model terbaik diperoleh dari Kategori III (80:10:10) Pada saat <i>training</i> ke-20.
+                Pada Kategori III juga didapatkan rata-rata MAPE dari keseluruhan proses <i>training</i> adalah <strong>0,926998%</strong> dan standar deviasi <strong>0,152902%</strong>,
+                yang menunjukkan kategori III jauh lebih stabil dibandingkan Kategori lainnya.
+                Evaluasi yang digunakan adalah MAPE, besar MAPE pada model terbaik adalah <strong>0,799346%</strong>.
+                </p>
+                <div style="width: 100%; border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 10px; overflow: hidden; background: #1a1a1a;">
+                    <iframe 
+                        src="https://docs.google.com/spreadsheets/d/1ZVAvpkv0UcvZqy9h9zqpO6mt2lbtqeS8pUnryD-omvg/preview" 
+                        width="100%" 
+                        height="300px" 
+                        style="border: none; display: block;">
+                    </iframe>
+                </div>
+                <p style="font-size: 0.8rem; color: #aaa; margin-top: 8px; text-align: center;">
+                    <i>Tabel: Rincian Hasil Training dan Evaluasi Model BiLSTM</i>
+                </p>
+                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">Pada saat <i>training</i>, <i>loss function</i> yang digunakan adalah <i>Mean Square Error</i> (MSE).
+                    Visualisasi nilai <i>loss function</i> pada saat <i>training</i> dari model dengan nilai MAPE terendah terlihat seperti gambar di bawah ini:
+                </p>
+                <div class="visualisasi-grafik-container">
+                    <img src="pic-proyek1/5.png" alt="Visualisasi Harga IHSG">
+                </div>
+                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">Grafik di atas menandakan bahwa model terbaik tidak mengalami <i>overfitting</i> maupun <i>underfitting</i> dikarenakan
+                    antara <i>loss data training</i> dan <i>loss data validation</i> kurvanya sangat berdekatan.
+                </p>
+            </div>
+
+            <h3><i>Testing</i> dan Inferensi Model</h3>
+            <div class="result-box">
+                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">Setelah dilakukan <i>training</i> kemudian model terbaik akan di uji melalui data uji.
+                    Berikut hasil peramalan data uji sebagai <i>testing</i>.
+                </p>
+                <div style="width: 100%; border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 10px; overflow: hidden; background: #1a1a1a;">
+                    <iframe 
+                        src="https://docs.google.com/spreadsheets/d/1KmhAqk9FcwsbB_t94vMSbnY9JJbDQgRq/preview" 
+                        width="100%" 
+                        height="300px" 
+                        style="border: none; display: block;">
+                    </iframe>
+                </div>
+                <p style="font-size: 0.8rem; color: #aaa; margin-top: 8px; text-align: center;">
+                    <i>Tabel: Hasil Testing Model Terbaik</i>
+                </p>
+
+                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">Berikut merupakan hasil inferensi model dengan meramalkan 30 hari berikutnya setelah tanggal terakhir periode pengamatan.
+                </p>
+                <div style="width: 100%; border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 10px; overflow: hidden; background: #1a1a1a;">
+                    <iframe 
+                        src="https://docs.google.com/spreadsheets/d/1_Bywhbkh3uHCMszoP4plveXpAKCi-GHhFSl2-5Xztso/preview" 
+                        width="100%" 
+                        height="300px" 
+                        style="border: none; display: block;">
+                    </iframe>
+                </div>
+                <p style="font-size: 0.8rem; color: #aaa; margin-top: 8px; text-align: center;">
+                    <i>Tabel: Inferensi Model</i>
+                </p>
+
+            </div>
+
+        </section>
+
+        <footer>
+            &copy;Portofolio Dwi Sandi Kalla - 2026
+        </footer>
+    </div>
+
+</body>
+</html>
