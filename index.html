@@ -61,6 +61,16 @@
             text-rendering: optimizeLegibility;
         }
 
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
         nav {
             position: fixed;
             top: 0;
@@ -81,18 +91,32 @@
             justify-content: space-between; /* Logo kiri, Menu kanan */
             align-items: center;
         }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-light);
-            text-decoration: none;
+
+        .nav-profile-img {
+            width: 32px; /* Sedikit lebih kecil agar aman di HP */
+            height: 32px;
+            border-radius: 50%;
+            margin-right: 8px;
+            object-fit: cover;
+            border: 1.5px solid #8b5cf6;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .nav-profile-img.show {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .nav-logo {
             color: white;
             font-weight: bold;
             font-size: 1rem;
+            display: flex;
+            align-items: center;
         }
         
         /* Sembunyikan Checkbox */
@@ -356,6 +380,18 @@
                 width: 100%;
                 font-size: 1.6rem;
             }
+
+            .nav-logo {
+                display: flex;
+                align-items: center;
+                font-size: 14px; /* Mengecilkan teks sedikit agar foto muat */
+            }
+            
+            .nav-profile-img {
+                width: 28px; /* Lebih kecil lagi untuk layar HP */
+                height: 28px;
+                margin-right: 5px;
+            }
         
             /* Ketika Checkbox dicentang (ikon diklik), menu muncul */
             #menu-toggle:checked ~ .nav-links {
@@ -464,7 +500,11 @@
 
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo">Dwi Sandi Kalla</a>
+            <!-- Tambahkan tag img di dalam tag anchor logo -->
+            <a href="#" class="logo">
+                <img src="profile2.png" alt="Dwi Sandi Kalla" class="nav-profile-img" id="nav-profile-img">
+                <span>Dwi Sandi Kalla</span>
+            </a>
             
             <input type="checkbox" id="menu-toggle">
             <label for="menu-toggle" class="hamburger">
@@ -819,22 +859,36 @@
         </p>
     </footer>
 
-<!-- Library AOS JS -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Library AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Inisialisasi AOS dengan settingan profesional
+        AOS.init({
+            duration: 1200,      // Durasi animasi (1.2 detik)
+            once: true,          // Animasi hanya jalan sekali saat scroll ke bawah (disarankan untuk portofolio)
+            offset: 100,         // Animasi dimulai saat elemen 150px muncul di layar
+            easing: 'ease-in-out-sine', // Gerakan yang halus
+            disable: false,   // Opsional: ganti ke false jika ingin animasi aktif di mobile
+        });
+    
+        // Menghindari masalah layout bergeser saat animasi loading
+        window.addEventListener('load', AOS.refresh);
+    </script>
 
-<script>
-    // Inisialisasi AOS dengan settingan profesional
-    AOS.init({
-        duration: 1200,      // Durasi animasi (1.2 detik)
-        once: true,          // Animasi hanya jalan sekali saat scroll ke bawah (disarankan untuk portofolio)
-        offset: 100,         // Animasi dimulai saat elemen 150px muncul di layar
-        easing: 'ease-in-out-sine', // Gerakan yang halus
-        disable: false,   // Opsional: ganti ke false jika ingin animasi aktif di mobile
-    });
-
-    // Menghindari masalah layout bergeser saat animasi loading
-    window.addEventListener('load', AOS.refresh);
-</script>
+    <script>
+        window.onscroll = function() {
+            const navPhoto = document.getElementById("nav-profile-img");
+            
+            // Angka 300 adalah jarak scroll dalam pixel
+            // Anda bisa menyesuaikannya sesuai tinggi bagian Home/Hero Anda
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                navPhoto.classList.add("show");
+            } else {
+                navPhoto.classList.remove("show");
+            }
+        };
+    </script>
 
 </body>
 </html>
