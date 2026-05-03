@@ -164,8 +164,8 @@
         .btn-outline { border: 0.1rem solid var(--accent-purple); color: var(--accent-purple); }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 0.5rem 1.5rem rgba(168, 85, 247, 0.3); }
 
-        section { padding: 10rem 10%; 
-            min-height: 100vh;
+        section { padding: 4rem 5%; 
+            min-height: auto;
         }
 
         h2 { font-size: 2.3rem; 
@@ -215,6 +215,11 @@
                 text-align: center;
                 padding-top: 8rem;
                 gap: 2rem;
+            }
+
+            section {
+                padding: 10rem 10%;
+                min-height: 100vh;
             }
 
             .hero-text-container {
@@ -626,8 +631,8 @@
     </section>
 
     <!-- Section Soft Skill -->
-    <section id="lainnya" style="padding-top: 0; margin-top: -50px; margin-bottom: 100px; padding-bottom: 0; min-height: auto !important;">
-        <div class="grid" style="margin-top: 0; padding-top: 0; min-height: auto !important;">
+    <section id="lainnya">
+        <div class="grid">
             <div class="card" data-aos="fade" data-aos-duration="1200">
                 <h3 style="font-size: 1.8rem; color: var(--accent-purple); margin: 0.5;"><i>Soft Skill</i></h3>
                 <div class="tag-container">
@@ -646,9 +651,8 @@
         </div>
     </section>
 
-    <!-- Section Hard Skill -->
-    <section id="lainnya" style="padding-top: 0; margin-top: -50px; margin-bottom: 100px; padding-bottom: 0; min-height: auto !important;">
-        <div class="grid" style="margin-top: 0; padding-top: 0; min-height: auto !important;">
+    <section id="lainnya">
+        <div class="grid">
             <div class="card" data-aos="fade" data-aos-duration="1200">
                 <h3 style="font-size: 1.8rem; color: var(--accent-purple); margin: 0.5;"><i>Hard Skill</i></h3>
                 <div class="tag-container">
@@ -681,7 +685,7 @@
         once: true,          // Animasi hanya jalan sekali saat scroll ke bawah (disarankan untuk portofolio)
         offset: 150,         // Animasi dimulai saat elemen 150px muncul di layar
         easing: 'ease-in-out-sine', // Gerakan yang halus
-        disable: 'mobile',   // Opsional: ganti ke false jika ingin animasi aktif di mobile
+        disable: false,   // Opsional: ganti ke false jika ingin animasi aktif di mobile
     });
 
     // Menghindari masalah layout bergeser saat animasi loading
