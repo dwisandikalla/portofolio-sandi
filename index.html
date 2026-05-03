@@ -84,9 +84,37 @@
             text-decoration: none;
         }
 
+        .nav-logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Sembunyikan Checkbox */
+        #menu-toggle {
+            display: none;
+        }
+        
+        /* Styling Hamburger Menu */
+        .hamburger {
+            display: none; /* Sembunyikan di Desktop */
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
         .nav-links {
             display: flex; 
-            gap: 1.5rem; 
+            gap: 20px; 
             list-style: none;
             overflow-x: auto;
             white-space: nowrap;
@@ -292,6 +320,40 @@
                 display: flex;
                 flex-wrap: wrap;
             }
+
+            .hamburger {
+                display: flex; /* Munculkan garis 3 di HP */
+            }
+        
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                right: -100%; /* Sembunyikan menu di kanan layar */
+                width: 70%;
+                height: 100vh;
+                background: rgba(20, 20, 20, 0.98);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: 0.5s;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            }
+        
+            /* Ketika Checkbox dicentang (ikon diklik), menu muncul */
+            #menu-toggle:checked ~ .nav-links {
+                right: 0;
+            }
+        
+            /* Efek Animasi Hamburger jadi Silang (X) saat diklik */
+            #menu-toggle:checked ~ .hamburger span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 6px);
+            }
+            #menu-toggle:checked ~ .hamburger span:nth-child(2) {
+                opacity: 0;
+            }
+            #menu-toggle:checked ~ .hamburger span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -6px);
+            }
         }
         
         /* Efek Hover Kartu sesuai permintaan sebelumnya */
@@ -381,7 +443,17 @@
 <body>
 
     <nav>
-        <div style="font-size: 1.3rem; font-weight: bold;">Dwi Sandi Kalla</div>
+        <div class="nav-logo">Dwi Sandi Kalla</div>
+        
+        <!-- Tombol Hamburger -->
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+    
+        <!-- Menu Navigasi -->
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#pendidikan">Pendidikan</a></li>
