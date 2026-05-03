@@ -65,8 +65,8 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1rem 5%;
-            background: rgba(10, 10, 10, 0.8);
+            padding: 1.5rem 5%;
+            background: rgba(10, 10, 10, 0.9);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             display: flex;
@@ -88,10 +88,16 @@
             color: white;
             font-weight: bold;
             font-size: 1.2rem;
+            text-decoration: none;
+            white-space: nowrap;
         }
         
         /* Sembunyikan Checkbox */
         #menu-toggle {
+            display: none;
+        }
+
+        #menu-toggle, .hamburger {
             display: none;
         }
         
@@ -114,8 +120,10 @@
 
         .nav-links {
             display: flex; 
-            gap: 20px; 
+            gap: 2.5rem; 
             list-style: none;
+            margin: 0;
+            padding: 0;
             overflow-x: auto;
             white-space: nowrap;
         }
@@ -123,7 +131,7 @@
         .nav-links a {
             text-decoration: none;
             color: var(--text-light);
-            font-size: 1rem;
+            font-size: 1.4rem;
             font-weight: 400; /* Serif tebal, jadi gunakan weight normal */
             transition: color 0.3s;
 
@@ -322,21 +330,35 @@
             }
 
             .hamburger {
-                display: flex; /* Munculkan garis 3 di HP */
+                display: flex; /* Munculkan hamburger di HP */
+                flex-direction: column;
+                gap: 5px;
+                cursor: pointer;
+                z-index: 1001;
+            }
+
+            .hamburger span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background: white;
+                border-radius: 2px;
+                transition: 0.3s;
             }
         
             .nav-links {
-                position: absolute;
-                top: 100%;
-                right: -100%; /* Sembunyikan menu di kanan layar */
+                position: fixed;
+                top: 0;
+                right: -100%; /* Sembunyikan ke kanan */
                 width: 70%;
                 height: 100vh;
-                background: rgba(20, 20, 20, 0.98);
+                background: rgba(15, 15, 15, 0.98);
                 flex-direction: column;
+                justify-content: center;
                 align-items: center;
-                padding-top: 50px;
-                transition: 0.5s;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+                gap: 3rem;
+                transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+                box-shadow: -10px 0 20px rgba(0,0,0,0.5);
             }
         
             /* Ketika Checkbox dicentang (ikon diklik), menu muncul */
@@ -443,17 +465,17 @@
 <body>
 
     <nav>
-        <div class="nav-logo">Dwi Sandi Kalla</div>
+        <a href="#home" class="nav-logo">Dwi Sandi Kalla</a>
         
-        <!-- Tombol Hamburger -->
+        <!-- Checkbox harus sebelum hamburger dan nav-links -->
         <input type="checkbox" id="menu-toggle">
+        
         <label for="menu-toggle" class="hamburger">
             <span></span>
             <span></span>
             <span></span>
         </label>
     
-        <!-- Menu Navigasi -->
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#pendidikan">Pendidikan</a></li>
