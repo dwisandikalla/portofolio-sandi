@@ -254,19 +254,43 @@
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); gap: 2.5rem; }
 
         .card {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 3rem; /* Lebih luas */
-            color: #bbb;
+            background: var(--card-bg);
+            padding: 3rem;
             border-radius: 1.5rem;
             border: 1px solid rgba(15, 252, 190, 0.2);
-            transition: 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            text-decoration: none; 
         }
 
-        .card h3 { 
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--accent-mint);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 15px 30px rgba(15, 252, 190, 0.4);
+        }
+        
+        /* Style judul di dalam kartu */
+        .card h3 {
+            color: var(--accent-mint);
+            margin-bottom: 1rem;
             font-size: 1.8rem; 
             margin-bottom: 1.2rem; 
             font-weight: 700; 
             color: var(--text-light);
+        }
+        
+        /* Menghilangkan garis bawah pada link portofolio */
+        .card-link {
+            text-decoration: none !important; /* Memaksa penghapusan garis bawah */
+            color: inherit; /* Menjaga warna teks agar tidak berubah jadi biru link */
+            display: block; /* Memastikan seluruh area kotak bisa diklik */
+        }
+
+        /* Memastikan teks di dalam kartu juga tidak bergaris bawah saat di-hover */
+        .card-link:hover {
+            text-decoration: none;
+            color: var(--accent-mint);
         }
 
         .card p { font-size: 1.5rem; 
@@ -411,46 +435,6 @@
             #menu-toggle:checked ~ .hamburger span:nth-child(3) {
                 transform: translateY(-8px) rotate(-45deg);
             }
-        }
-        
-        /* Efek Hover Kartu sesuai permintaan sebelumnya */
-        .card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 1.5rem;
-            border: 0.1rem solid rgba(255,255,255,0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-        }
-
-        .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--accent-mint);
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
-        }
-        
-        /* Style judul di dalam kartu */
-        .card h3 {
-            color: var(--accent-mint);
-            margin-bottom: 1rem;
-        }
-        
-        /* Menghilangkan garis bawah pada link portofolio */
-        .card-link {
-            text-decoration: none !important; /* Memaksa penghapusan garis bawah */
-            color: inherit; /* Menjaga warna teks agar tidak berubah jadi biru link */
-            display: block; /* Memastikan seluruh area kotak bisa diklik */
-        }
-
-        /* Memastikan teks di dalam kartu juga tidak bergaris bawah saat di-hover */
-        .card-link:hover {
-            text-decoration: none;
-        }
-
-        .card {
-            /* ... kode card Anda yang lain ... */
-            text-decoration: none; 
         }
 
         /* Container pembungkus kotak-kotak */
