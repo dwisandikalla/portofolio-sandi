@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Portofolio - [Nama Proyek]</title>
+    <title>Detail Portofolio - Peramalan IHSG</title>
     <style>
         :root {
             /* Biru utama dari user */
@@ -256,6 +256,32 @@
             border-bottom: 2px solid var(--accent-secondary); /* Penutup garis bawah Mint */
         }
 
+        /* Kontainer pembungkus agar bisa di-scroll horizontal di mobile */
+        .table-responsive-wrapper {
+            width: 100%;
+            overflow-x: auto; /* Mengizinkan scroll horizontal */
+            -webkit-overflow-scrolling: touch; /* Scroll halus di iOS */
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        /* Pastikan iframe atau tabel di dalamnya punya lebar minimum agar tidak gepeng */
+        .table-responsive-wrapper iframe, 
+        .table-responsive-wrapper table {
+            min-width: 600px; /* Lebar minimal agar data tetap terbaca jelas */
+            width: 100%;
+            border: none;
+        }
+        
+        /* Sembunyikan scrollbar yang mengganggu (opsional) */
+        .table-responsive-wrapper::-webkit-scrollbar {
+            height: 4px;
+        }
+        .table-responsive-wrapper::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 10px;
+        }
+
         /* Header */
         thead th {
             border-top: 2px solid white;    /* Garis atas tebal */
@@ -395,12 +421,11 @@
                 </p>
             
                 <!-- Container Iframe Responsif -->
-                <div style="width: 100%; border: 1px solid var(--blue-primary); border-radius: 10px; overflow-x: auto; background: var(--card-bg); margin-top: 1.5rem; -webkit-overflow-scrolling: touch;">
+                <div class="table-responsive-wrapper">
                     <iframe 
                         src="https://docs.google.com/spreadsheets/d/1m7MVidqyD3qnJXGqlgQy-mZL7UsRK6AP/preview" 
-                        width="100%" 
                         height="400px" 
-                        style="border: none; display: block; min-width: 600px;">
+                        style="min-width: 800px;"> <!-- Menimpa min-width CSS agar lebih lega -->
                     </iframe>
                 </div>
             
@@ -591,12 +616,12 @@
                 </p>
             
                 <!-- Container Iframe Responsif -->
-                <div style="width: 100%; border: 1px solid var(--blue-primary); border-radius: 10px; overflow-x: auto; background: var(--card-bg); -webkit-overflow-scrolling: touch;">
+                <div class="table-responsive-wrapper">
                     <iframe 
                         src="https://docs.google.com/spreadsheets/d/1ZVAvpkv0UcvZqy9h9zqpO6mt2lbtqeS8pUnryD-omvg/preview" 
                         width="100%" 
                         height="400px" 
-                        style="border: none; display: block; min-width: 600px;">
+                        style="border: none; display: block; min-width: 800px;">
                     </iframe>
                 </div>
                 <p style="text-align: center; font-size: 0.9rem; color: var(--accent-secondary); margin-top: 10px;">
@@ -623,12 +648,12 @@
                 <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">Setelah dilakukan <i>training</i> kemudian model terbaik akan di uji melalui data uji.
                     Berikut hasil peramalan data uji sebagai <i>testing</i>.
                 </p>
-                <div style="width: 100%; border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 10px; overflow: hidden; background: #1a1a1a;">
+                <div class="table-responsive-wrapper">
                     <iframe 
                         src="https://docs.google.com/spreadsheets/d/1KmhAqk9FcwsbB_t94vMSbnY9JJbDQgRq/preview" 
                         width="100%" 
                         height="300px" 
-                        style="border: none; display: block;">
+                        style="border: none; display: block; min-width: 800px;">
                     </iframe>
                 </div>
                 <p style="font-size: 0.8rem; color: #aaa; margin-top: 8px; text-align: center;">
@@ -637,12 +662,12 @@
 
                 <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">Berikut merupakan hasil inferensi model dengan meramalkan 30 hari berikutnya setelah tanggal terakhir periode pengamatan.
                 </p>
-                <div style="width: 100%; border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 10px; overflow: hidden; background: #1a1a1a;">
+                <div class="table-responsive-wrapper">
                     <iframe 
                         src="https://docs.google.com/spreadsheets/d/1_Bywhbkh3uHCMszoP4plveXpAKCi-GHhFSl2-5Xztso/preview" 
                         width="100%" 
                         height="300px" 
-                        style="border: none; display: block;">
+                        style="border: none; display: block; min-width: 800px;">
                     </iframe>
                 </div>
                 <p style="font-size: 0.8rem; color: #aaa; margin-top: 8px; text-align: center;">
