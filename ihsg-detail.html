@@ -12,12 +12,18 @@
     <title>Detail Portofolio - [Nama Proyek]</title>
     <style>
         :root {
-            --bg-color: #0a192f;       /* Biru gelap pekat untuk latar belakang */
-            --card-bg: #112240;        /* Biru navy untuk kontainer */
-            --accent-primary: #106EBE;  /* Biru utama */
-            --accent-secondary: #0FFCBE;/* Mint terang */
-            --text-main: #e6f1ff;
-            --text-muted: #8892b0;
+            /* Biru utama dari user */
+            --blue-primary: #106EBE; 
+            /* Mint dari user */
+            --mint-accent: #0FFCBE;
+            
+            /* Warna latar belakang: Biru sangat gelap (Deep Blue) */
+            --bg-color: #051221;
+            /* Warna kartu: Biru navy yang serasi */
+            --card-bg: #0A3D70;
+            
+            --text-main: #FFFFFF;
+            --text-muted: #A0C4E8; /* Biru muda pudar */
         }
 
         html {
@@ -51,7 +57,7 @@
         /* Navigasi / Tombol Kembali */
         .back-link {
             text-decoration: none;
-            color: var(--accent-secondary);
+            color: var(--mint-accent);
             font-size: 1.4rem; /* 14px */
             display: flex;
             align-items: center;
@@ -61,19 +67,20 @@
         }
 
         .back-link:hover {
+            filter: brightness(1.2);
             color: white;
             transform: translateX(-5px);
         }
 
         /* Header Proyek */
         header {
-            border-bottom: 2px solid var(--card-bg);
+            border-bottom: 2px solid var(--blue-primary);
             padding-bottom: 20px;
             margin-bottom: 40px;
         }
 
         h1 {
-            color: var(--accent-secondary);
+            color: var(--mint-accent);
             font-size: 3rem; /* Ukuran font terkunci */
             margin: 0;
             letter-spacing: -1px;
@@ -103,12 +110,12 @@
             padding: 30px;
             border-radius: 15px;
             margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid rgba(157, 78, 221, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border: 1px solid rgba(15, 252, 190, 0.1);
         }
 
         h2 {
-            color: var(--accent-secondary);
+            color: var(--mint-accent);
             font-size: 2.5rem; /* Ukuran font terkunci */
             margin-top: 0;
             display: flex;
@@ -120,7 +127,7 @@
             content: "";
             width: 4px;
             height: 20px;
-            background: var(--accent-primary);
+            background: var(--blue-primary);
             display: inline-block;
             border-radius: 2px;
         }
@@ -142,14 +149,14 @@
             padding: 10px;
             border-radius: 8px;
             text-align: center;
-            border-bottom: 2px solid var(--accent-primary);
+            border-bottom: 2px solid var(--mint-accent);
         }
 
         .result-box {
             background: linear-gradient(135deg, #3c096c, #240046);
             padding: 20px;
             border-radius: 10px;
-            border-left: 5px solid var(--accent-secondary);
+            border-left: 5px solid var(--mint-accent);
         }
 
         footer {
@@ -195,6 +202,7 @@
             border-bottom: 1px solid white; /* Garis bawah tipis */
             padding: 4px 10px;             /* Jarak kiri-kanan diperlebar */
             font-weight: normal;
+            border-top: 2px solid var(--mint-accent);
         }
 
         /* Isi data */
@@ -212,6 +220,7 @@
         /* Garis paling bawah */
         tbody tr:last-child td {
             border-bottom: 2px solid white;
+            border-bottom: 2px solid var(--mint-accent);
         }
         /* Mengatur kontainer agar gambarnya berada di tengah */
         .visualisasi-grafik-container {
@@ -244,6 +253,7 @@
             flex: 1;           /* Membuat setiap item memiliki lebar yang sama */
             text-align: center; /* Mengetengahkan teks judul */
             margin: 0;         /* Menghilangkan margin bawaan browser */
+            color: var(--mint-accent);
         }
 
         /* Mengatur ukuran gambar agar tidak berantakan */
@@ -260,6 +270,13 @@
             font-family: Arial, sans-serif;
             font-weight: bold;
             color: white;      /* Sesuaikan dengan tema gelap Anda */
+        }
+
+        footer {
+            color: var(--blue-primary);
+            text-align: center;
+            margin-top: 60px;
+            font-size: 0.8rem;
         }
     </style>
 </head>
