@@ -22,12 +22,10 @@
 
     <style>
         :root {
-            --primary-bg: #032d4d; /* Biru royal tua */
-            /* Gradasi radial, lebih fokus mint di tengah, seperti referensi */
-            --gradient: radial-gradient(circle, #00d2b5 0%, #032d4d 70%); 
-            --accent-purple: #00f5c9; /* Ganti ungu dengan mint */
-            --text-light: #f3f4f6;
-            --card-bg: rgba(255, 255, 255, 0.05);
+            --primary-bg: #106EBE; /* Biru */
+            --accent-mint: #0FFCBE; /* Mint */
+            --text-light: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.1);
         }
 
         /* 3. RESET TOTAL & BOX SIZING */
@@ -50,7 +48,6 @@
         body {
             font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
             background: var(--primary-bg);
-            background-image: var(--gradient);
             background-attachment: fixed;
             color: var(--text-light);
             /* Gunakan rem, sekarang 1.6rem pasti 16px di semua browser */
@@ -77,11 +74,11 @@
             top: 0;
             width: 100%;
             padding: 1.5rem 0; /* Padding vertikal saja */
-            background: rgba(3, 45, 77, 0.95);;
+            background: #106EBE;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 0.1rem solid rgba(0, 245, 201, 0.2);
+            border-bottom: 2px solid var(--accent-mint);
         }
 
         .nav-container {
@@ -99,7 +96,7 @@
             border-radius: 50%;
             margin-right: 8px;
             object-fit: cover;
-            border: 1.5px solid #00f5c9;
+            border: 1.5px solid var(--accent-mint);
             opacity: 0;
             transform: scale(0);
             transition: all 0.3s ease-in-out;
@@ -158,7 +155,7 @@
         }
 
         .nav-links a:hover {
-            color: var(--accent-purple);
+            color: var(--accent-mint);
         }
 
         #home {
@@ -184,17 +181,17 @@
             width: 28rem;
             height: 28rem;
             border-radius: 50%;
-            border: 0.4rem solid var(--accent-purple);
+            border: 0.5rem solid var(--accent-mint);
             margin-bottom: 0;
             object-fit: cover;
-            box-shadow: 0 0 3rem rgba(0, 245, 201, 0.4);
+            box-shadow: 0 0 2rem rgba(15, 252, 190, 0.3);
             flex-shrink: 0;
         }
 
         h1 { 
             font-size: 2.5rem; 
             margin-bottom: 1.5rem;
-            color: var(--accent-purple);
+            color: var(--accent-mint);
             font-weight: 700;
             line-height: 1.2;
             letter-spacing: -0.01em;
@@ -203,7 +200,7 @@
         .hero-desc { 
             font-size: 1.2rem; 
             max-width: 65rem; 
-            color: #ddd; 
+            color: #f0f0f0; 
             margin-bottom: 3rem;
             text-align: justify;
         }
@@ -212,7 +209,7 @@
             display: flex; 
             gap: 1.2rem; 
             color: #032d4d;
-            background: var(--accent-purple);
+            background: var(--accent-mint);
             flex-wrap: wrap; 
             justify-content: flex-start; 
         }
@@ -228,9 +225,9 @@
             /* font-family: sans-serif; */
         }
 
-        .btn-primary { background: var(--accent-purple); color: white; }
-        .btn-outline { border: 0.1rem solid var(--accent-purple); color: var(--accent-purple); background: transparent; }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 0.5rem 1.5rem rgba(0, 245, 201, 0.3); }
+        .btn-primary { background: var(--accent-mint); color: white; }
+        .btn-outline { border: 0.1rem solid var(--accent-mint); color: var(--accent-purple); background: transparent; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
         section {
             padding: 100px 10% 60px 10% !important; 
@@ -245,18 +242,18 @@
         h2 { font-size: 2.3rem; 
             margin-bottom: 4rem; 
             text-align: center; 
-            color: var(--accent-purple); 
+            color: var(--accent-mint); 
             font-weight: 700;
         }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); gap: 2.5rem; }
 
         .card {
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.08);
             padding: 3rem; /* Lebih luas */
             color: #bbb;
             border-radius: 1.5rem;
-            border: 0.1rem solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(15, 252, 190, 0.2);
             transition: 0.3s;
         }
 
@@ -429,13 +426,14 @@
 
         .card:hover {
             transform: translateY(-10px) scale(1.02);
-            border-color: var(--accent-purple);
+            border-color: var(--accent-mint);
+            background: rgba(255, 255, 255, 0.12);
             box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
         }
         
         /* Style judul di dalam kartu */
         .card h3 {
-            color: var(--accent-purple);
+            color: var(--accent-mint);
             margin-bottom: 1rem;
         }
         
@@ -469,7 +467,7 @@
         .skill-tag {
             background: rgba(168, 85, 247, 0.1);
             border: 1px solid rgba(168, 85, 247, 0.4);
-            border-bottom: 3px solid var(--accent-purple);
+            border-bottom: 3px solid var(--accent-mint);
             color: white;
             padding: 8px 16px;
             border-radius: 8px;
@@ -495,6 +493,7 @@
             margin-top: 0; 
             border-top: 1px solid rgba(0, 245, 201, 0.1);
             padding-top: 10px; 
+            background: #0d5ba0;
         }
 
         .main-footer p {
