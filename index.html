@@ -209,7 +209,6 @@
             display: flex; 
             gap: 1.2rem; 
             color: #032d4d;
-            background: var(--accent-mint);
             flex-wrap: wrap; 
             justify-content: flex-start; 
         }
@@ -229,7 +228,11 @@
 
         .btn-primary { background: var(--accent-mint); color: #106EBE; }
         .btn-outline { border: 0.1rem solid var(--accent-mint); color: var(--accent-purple); background: transparent; }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); filter: brightness(1.1); }
+        .btn:hover { 
+            transform: scale(1.05) translateY(-2px); /* Zoom dan sedikit naik ke atas */
+            box-shadow: 0 8px 20px rgba(15, 252, 190, 0.6); /* Shadow mint yang lebih dalam */
+            filter: brightness(1.1); 
+        }
 
         section {
             padding: 100px 10% 60px 10% !important; 
@@ -461,20 +464,24 @@
 
         /* Kelas untuk kotak/tag */
         .skill-tag {
-            background: rgba(168, 85, 247, 0.1);
-            border: 1px solid rgba(168, 85, 247, 0.4);
-            border-bottom: 3px solid var(--accent-mint);
-            color: white;
+            background-color: var(--accent-mint) !important; /* Gunakan mint solid */
+            color: #106EBE !important; /* Teks biru gelap untuk kontras maksimal */
+            border: none;
+            border-bottom: 3px solid rgba(0, 0, 0, 0.2); /* Efek bayangan bawah tipis */
             padding: 8px 16px;
             border-radius: 8px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease; /* Bonus: efek saat kursor mendekat */
+            font-size: 1.3rem; /* Ukuran font diperbesar sedikit */
+            font-weight: 700; /* Tebalkan teks agar lebih tegas */
+            transition: all 0.3s ease;
+            display: inline-block; /* Bonus: efek saat kursor mendekat */
         }
 
         /* Efek hover agar lebih interaktif */
         .skill-tag:hover {
-            background: rgba(0, 245, 201, 0.2);
+            background-color: #ffffff !important; /* Berubah jadi putih saat di-hover */
             transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(15, 252, 190, 0.8); 
+            cursor: pointer;
         }
 
         .main-footer {
