@@ -22,9 +22,10 @@
 
     <style>
         :root {
-            --primary-bg: #0a0a0a;
-            --gradient: linear-gradient(135deg, #0a0a0a 0%, #2d004d 100%);
-            --accent-purple: #a855f7;
+            --primary-bg: #032d4d; /* Biru royal tua */
+            /* Gradasi radial, lebih fokus mint di tengah, seperti referensi */
+            --gradient: radial-gradient(circle, #00d2b5 0%, #032d4d 70%); 
+            --accent-purple: #00f5c9; /* Ganti ungu dengan mint */
             --text-light: #f3f4f6;
             --card-bg: rgba(255, 255, 255, 0.05);
         }
@@ -76,11 +77,11 @@
             top: 0;
             width: 100%;
             padding: 1.5rem 0; /* Padding vertikal saja */
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(3, 45, 77, 0.95);;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 0.1rem solid rgba(168, 85, 247, 0.2);
+            border-bottom: 0.1rem solid rgba(0, 245, 201, 0.2);
         }
 
         .nav-container {
@@ -98,7 +99,7 @@
             border-radius: 50%;
             margin-right: 8px;
             object-fit: cover;
-            border: 1.5px solid #8b5cf6;
+            border: 1.5px solid #00f5c9;
             opacity: 0;
             transform: scale(0);
             transition: all 0.3s ease-in-out;
@@ -112,7 +113,7 @@
         }
 
         .nav-logo {
-            color: white;
+            color: var(--text-light);
             font-weight: bold;
             font-size: 1rem;
             display: flex;
@@ -186,13 +187,14 @@
             border: 0.4rem solid var(--accent-purple);
             margin-bottom: 0;
             object-fit: cover;
-            box-shadow: 0 0 3rem rgba(168, 85, 247, 0.4);
+            box-shadow: 0 0 3rem rgba(0, 245, 201, 0.4);
             flex-shrink: 0;
         }
 
         h1 { 
             font-size: 2.5rem; 
-            margin-bottom: 1.5rem; 
+            margin-bottom: 1.5rem;
+            color: var(--accent-purple);
             font-weight: 700;
             line-height: 1.2;
             letter-spacing: -0.01em;
@@ -201,7 +203,7 @@
         .hero-desc { 
             font-size: 1.2rem; 
             max-width: 65rem; 
-            color: #ccc; 
+            color: #ddd; 
             margin-bottom: 3rem;
             text-align: justify;
         }
@@ -209,6 +211,8 @@
         .btn-container { 
             display: flex; 
             gap: 1.2rem; 
+            color: #032d4d;
+            background: var(--accent-purple);
             flex-wrap: wrap; 
             justify-content: flex-start; 
         }
@@ -225,8 +229,8 @@
         }
 
         .btn-primary { background: var(--accent-purple); color: white; }
-        .btn-outline { border: 0.1rem solid var(--accent-purple); color: var(--accent-purple); }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 0.5rem 1.5rem rgba(168, 85, 247, 0.3); }
+        .btn-outline { border: 0.1rem solid var(--accent-purple); color: var(--accent-purple); background: transparent; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 0.5rem 1.5rem rgba(0, 245, 201, 0.3); }
 
         section {
             padding: 100px 10% 60px 10% !important; 
@@ -250,12 +254,14 @@
         .card {
             background: var(--card-bg);
             padding: 3rem; /* Lebih luas */
+            color: #bbb;
             border-radius: 1.5rem;
             border: 0.1rem solid rgba(255,255,255,0.1);
             transition: 0.3s;
         }
 
-        .card h3 { font-size: 1.8rem; 
+        .card h3 { 
+            font-size: 1.8rem; 
             margin-bottom: 1.2rem; 
             font-weight: 700; 
             color: var(--text-light);
@@ -318,6 +324,7 @@
             .hero-desc {
                 text-align: center;
                 font-size: 1.6rem;
+                color: #f3f4f6;
             }
 
             .grid, .home-container { 
@@ -359,13 +366,13 @@
                 right: -100%; /* Sembunyikan ke kanan luar layar */
                 width: 250px; /* Lebar menu dropdown */
                 height: auto;
-                background: rgba(20, 20, 20, 0.98);
                 flex-direction: column;
                 padding: 2rem 0;
                 transition: 0.4s ease-in-out;
-                border-left: 1px solid rgba(168, 85, 247, 0.2);
-                border-bottom: 1px solid rgba(168, 85, 247, 0.2);
-                box-shadow: -10px 10px 20px rgba(0,0,0,0.5);
+                background: rgba(3, 45, 77, 0.98); /* Ganti dari hitam ke biru royal gelap */
+                border-left: 1px solid rgba(0, 245, 201, 0.2); /* Ganti ungu ke mint transparan */
+                border-bottom: 1px solid rgba(0, 245, 201, 0.2); /* Ganti ungu ke mint transparan */
+                box-shadow: -10px 10px 20px rgba(0,0,0,0.3);
                 gap: 0; /* Gunakan padding pada li agar rapi */
             }
 
@@ -472,7 +479,7 @@
 
         /* Efek hover agar lebih interaktif */
         .skill-tag:hover {
-            background: rgba(168, 85, 247, 0.2);
+            background: rgba(0, 245, 201, 0.2);
             transform: translateY(-2px);
         }
 
@@ -486,13 +493,14 @@
 
         footer {
             margin-top: 0; 
+            border-top: 1px solid rgba(0, 245, 201, 0.1);
             padding-top: 10px; 
         }
 
         .main-footer p {
             margin: 0;
             font-size: 0.85rem;
-            color: #aaa;
+            color: #bbb;
         }
     </style>
 </head>
