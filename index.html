@@ -1,31 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<!DOCTYPE html>
-<head>
     <meta charset="UTF-8">
-    <!-- 1. PENGUNCI VIEWPORT: Wajib agar mobile tidak zoom otomatis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Dwi Sandi Kalla | Portfolio</title>
     
-    <!-- 2. PENGUNCI JENIS FONT: Mengambil dari Google Fonts agar SAMA di semua OS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- Normalize CSS untuk menyamakan standar antar browser -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 
-    <!-- Library AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         :root {
-            --primary-bg: #106EBE; /* Biru */
-            --accent-mint: #0FFCBE; /* Mint */
-            --text-light: #ffffff;
-            --card-bg: rgba(255, 255, 255, 0.1);
+            /* TEMA WARNA BARU: Black, Obsidian, & Deep Sapphire Blue dengan Aksen Mint Elektrik */
+            --primary-bg: #0A0F1D;      /* Hitam kebiruan pekat (Obsidian Night) */
+            --nav-bg: rgba(10, 15, 29, 0.85); /* Latar nav transparan mengikuti background */
+            --accent-mint: #0FFCBE;     /* Mint elektrik tetap dipertahankan untuk kontras tinggi */
+            --text-light: #F3F4F6;      /* Putih pudar premium agar tidak terlalu menusuk mata */
+            --text-muted: #9CA3AF;     /* Abu-abu terang untuk teks deskripsi */
+            --card-bg: rgba(255, 255, 255, 0.03); /* Glassmorphism sangat tipis di latar gelap */
+            --card-border: rgba(15, 252, 190, 0.15); /* Border mint transparan */
         }
 
         /* 3. RESET TOTAL & BOX SIZING */
@@ -74,11 +71,11 @@
             top: 0;
             width: 100%;
             padding: 1.5rem 0; /* Padding vertikal saja */
-            background: #0d5ba0;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             z-index: 1000;
-            border-bottom: 2px solid var(--accent-mint);
+            border-bottom: 1px solid rgba(15, 252, 190, 0.2);
         }
 
         .nav-container {
@@ -184,7 +181,7 @@
             border: 0.5rem solid var(--accent-mint);
             margin-bottom: 0;
             object-fit: cover;
-            box-shadow: 0 0 2rem rgba(15, 252, 190, 0.3);
+            box-shadow: 0 0 3rem rgba(15, 252, 190, 0.15);
             flex-shrink: 0;
         }
 
@@ -200,7 +197,7 @@
         .hero-desc { 
             font-size: 1.2rem; 
             max-width: 65rem; 
-            color: #f0f0f0; 
+            color: var(--text-muted); 
             margin-bottom: 3rem;
             text-align: justify;
         }
@@ -220,17 +217,17 @@
             text-decoration: none;
             font-weight: 700;
             background-color: var(--accent-mint); 
-            color: #106EBE;
+            color: #0A0F1D; /* Teks tombol gelap agar terbaca */
             display: inline-block;
             transition: all 0.2s;
             /* font-family: sans-serif; */
         }
 
-        .btn-primary { background: var(--accent-mint); color: #106EBE; }
+        .btn-primary { background: var(--accent-mint); color: #0A0F1D; }
         .btn-outline { border: 0.1rem solid var(--accent-mint); color: var(--accent-purple); background: transparent; }
         .btn:hover { 
             transform: scale(1.05) translateY(-2px); /* Zoom dan sedikit naik ke atas */
-            box-shadow: 0 8px 20px rgba(15, 252, 190, 0.6); /* Shadow mint yang lebih dalam */
+            box-shadow: 0 8px 25px rgba(15, 252, 190, 0.4); /* Shadow mint yang lebih dalam */
             filter: brightness(1.1); 
         }
 
@@ -257,7 +254,7 @@
             background: var(--card-bg);
             padding: 3rem;
             border-radius: 1.5rem;
-            border: 1px solid rgba(15, 252, 190, 0.2);
+            border: 1px solid var(--card-border);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             text-decoration: none; 
@@ -266,8 +263,8 @@
         .card:hover {
             transform: translateY(-10px) scale(1.02);
             border-color: var(--accent-mint);
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 15px 30px rgba(15, 252, 190, 0.4);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 15px 30px rgba(15, 252, 190, 0.2);
         }
         
         /* Style judul di dalam kartu */
@@ -294,7 +291,7 @@
         }
 
         .card p { font-size: 1.5rem; 
-            color: #bbb; 
+            color: var(--text-muted); 
             line-height: 1.7;
         }
 
@@ -413,10 +410,10 @@
                 flex-direction: column;
                 padding: 2rem 0;
                 transition: 0.4s ease-in-out;
-                background: rgba(3, 45, 77, 0.98); /* Ganti dari hitam ke biru royal gelap */
+                background: rgba(10, 15, 29, 0.98); /* Disesuaikan ke latar obsidian pekat */
                 border-left: 1px solid rgba(0, 245, 201, 0.2); /* Ganti ungu ke mint transparan */
                 border-bottom: 1px solid rgba(0, 245, 201, 0.2); /* Ganti ungu ke mint transparan */
-                box-shadow: -10px 10px 20px rgba(0,0,0,0.3);
+                box-shadow: -10px 10px 20px rgba(0,0,0,0.5);
                 gap: 0; /* Gunakan padding pada li agar rapi */
             }
 
@@ -461,7 +458,7 @@
             }
         }
 
-        /* Container pembungkus kotak-kotak */
+        /* Container pembungkus kotak-kokak */
         .tag-container {
             display: flex;
             flex-wrap: wrap;
@@ -473,7 +470,7 @@
         /* Kelas untuk kotak/tag */
         .skill-tag {
             background-color: var(--accent-mint) !important; /* Gunakan mint solid */
-            color: #106EBE !important; /* Teks biru gelap untuk kontras maksimal */
+            color: #0A0F1D !important; /* Teks kontras gelap */
             border: none;
             border-bottom: 3px solid rgba(0, 0, 0, 0.2); /* Efek bayangan bawah tipis */
             padding: 8px 16px;
@@ -496,7 +493,7 @@
             width: 100%;
             padding: 15px 0; 
             text-align: center;
-            border-top: 1px solid rgba(168, 85, 247, 0.2);
+            border-top: 1px solid rgba(15, 252, 190, 0.1);
             margin-top: 20px;
         }
 
@@ -506,9 +503,9 @@
             padding: 4rem; 
             font-weight: 400;
             margin-top: 0; 
-            border-top: 1px solid rgba(0, 245, 201, 0.1);
+            border-top: 1px solid rgba(15, 252, 190, 0.1);
             padding-top: 10px; 
-            background: #0d5ba0;
+            background: #060A14; /* Footer sedikit lebih gelap dari body */
         }
 
         .main-footer p {
@@ -522,7 +519,6 @@
 
     <nav>
         <div class="nav-container">
-            <!-- Tambahkan tag img di dalam tag anchor logo -->
             <a href="#" class="logo">
                 <img src="profile2.png" alt="Dwi Sandi Kalla" class="nav-profile-img" id="nav-profile-img">
                 <span>Dwi Sandi Kalla</span>
@@ -548,7 +544,6 @@
 
 
     <section id="home">
-        <!-- Foto di Kiri dengan animasi fade-right untuk kesan masuk yang halus -->
         <img src="profile2.png" 
             class="profile-img" 
             alt="Dwi Sandi Kalla" 
@@ -556,14 +551,12 @@
             data-aos-duration="1500">
 
         <div class="hero-text-container">
-            <!-- Judul dengan animasi fade-up -->
             <h1 style="font-size: 2.5rem;" 
                 data-aos="fade-up" 
                 data-aos-duration="1000">
                 Dwi Sandi Kalla
             </h1>
 
-            <!-- Deskripsi dengan delay agar muncul setelah judul -->
             <p class="hero-desc" 
             data-aos="fade-up" 
             data-aos-delay="300" 
@@ -575,7 +568,6 @@
                 Mencari peluang pada bidang data, analis, dan posisi lainnya yang membutuhkan kemampuan analitis dan <i>problem solving</i>.
             </p>
             <br>
-            <!-- Container tombol dengan delay paling akhir -->
             <div class="btn-container" 
                 data-aos="fade-up" 
                 data-aos-delay="500" 
@@ -588,13 +580,10 @@
     </section>
 
     <section id="pendidikan">
-        <!-- Judul muncul perlahan -->
         <h2 style="font-size: 2.3rem; margin-bottom: 3.5rem;" data-aos="fade">Pendidikan & Organisasi</h2>
         
         <div class="grid">
-            <!-- Kartu utama muncul perlahan -->
             <div class="card" data-aos="fade" data-aos-duration="1200">
-                <!-- Bagian Pendidikan -->
                 <div style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 1.5rem;">
                     <img src="Logo-Unsoed.png" alt="Logo Unsoed" style="width: 80px; height: auto;" class="instansi-logo" data-aos="fade" data-aos-delay="200">
                     
@@ -606,21 +595,20 @@
                         </p>
                         <p style="font-size: 1.3rem; color: white; margin: 2px 0 0 0;">IPK : 3.42/4.00</p>
                         
-                        <div style="margin-top: 15px; width: 100%; border: 1px solid #444; border-radius: 8px; overflow: hidden;" data-aos="fade" data-aos-delay="400">
+                        <div style="margin-top: 15px; width: 100%; border: 1px solid #222; border-radius: 8px; overflow: hidden;" data-aos="fade" data-aos-delay="400">
                             <iframe 
                                 src="https://drive.google.com/file/d/1fXIKpI079RKbX7edJ1gf8ALjKCnHKJ2D/preview" 
                                 width="100%" 
                                 height="400px" 
                                 allow="autoplay"
                                 style="border: none; display: block;">
-                            </iframe>
+                            </table>
                         </div>
                     </div>
                 </div>
             
-                <hr style="margin: 1rem 0; opacity: 0.2;">
+                <hr style="margin: 1rem 0; opacity: 0.1; border-color: var(--accent-mint);">
                 
-                <!-- Bagian Organisasi & Kepanitiaan -->
                 <h3 style="font-size: 1.8rem; color: var(--accent-mint); margin-top: 1rem;" data-aos="fade">Organisasi & Kepanitiaan:</h3>
             
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 1rem;" data-aos="fade" data-aos-delay="200">
@@ -628,7 +616,7 @@
                     <span style="color: white; font-size: 1rem; margin-left: 1.5rem; white-space: nowrap;">Februari 2024 - Desember 2024</span>
                 </div>
                 <ul style="font-size: 1rem; color: white; margin-left: 1.2rem; margin-top: 0.5rem;" data-aos="fade" data-aos-delay="300">
-                    <li>Memimpin dan menciptakan strategi pengembangan untuk meningkatkan kapasitas, <i>soft skill</i>, dan <i>hard skill</i> anggota dan pengurus UKM PR MIPA</li>
+                    <li>Memimpin dan menciptakan strategi pengembangan untuk meningkatkan kapasitas, <i>soft skill</i>, and <i>hard skill</i> anggota dan pengurus UKM PR MIPA</li>
                     <li>Merancang program kerja pengembangan <i>skill</i> dan branding UKM PR MIPA</li>
                     <li>Penghubung komunikasi antar divisi, ketua umum, dan organisasi lainnya di FMIPA</li>
                 </ul>
@@ -646,7 +634,7 @@
                 </ul>
                 
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; justify-content: center;">
-                    <div style="flex: 1; min-width: 300px; border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 12px; overflow: hidden; background: #1a1a1a;" data-aos="fade" data-aos-delay="600">
+                    <div style="flex: 1; min-width: 300px; border: 1px solid rgba(15, 252, 190, 0.2); border-radius: 12px; overflow: hidden; background: #0A0F1D;" data-aos="fade" data-aos-delay="600">
                         <iframe 
                             src="https://drive.google.com/file/d/1cp7s7UKZXpFci7QYKetC6Su2LCxd6X6n/preview" 
                             width="100%" 
@@ -654,12 +642,12 @@
                             allow="autoplay"
                             style="border: none; display: block;">
                         </iframe>
-                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid rgba(168, 85, 247, 0.2);">
+                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid rgba(15, 252, 190, 0.1);">
                             Surat Tugas Pengurus PR MIPA
                         </p>
                     </div>
 
-                    <div style="flex: 1; min-width: 300px; border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 12px; overflow: hidden; background: #1a1a1a;" data-aos="fade" data-aos-delay="700">
+                    <div style="flex: 1; min-width: 300px; border: 1px solid rgba(15, 252, 190, 0.2); border-radius: 12px; overflow: hidden; background: #0A0F1D;" data-aos="fade" data-aos-delay="700">
                         <iframe 
                             src="https://drive.google.com/file/d/1ilzR592OE1ofwatpGuhn4I6_uOViKNri/preview" 
                             width="100%" 
@@ -667,7 +655,7 @@
                             allow="autoplay"
                             style="border: none; display: block;">
                         </iframe>
-                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid rgba(168, 85, 247, 0.2);">
+                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid rgba(15, 252, 190, 0.1);">
                             Sertifikat Magang, <i>Expo</i>, dan <i>Open House</i>
                         </p>
                     </div>
@@ -677,11 +665,9 @@
     </section>
 
     <section id="pengalaman">
-        <!-- Judul Section muncul perlahan -->
         <h2 style="font-size: 2.3rem" data-aos="fade" data-aos-duration="1000">Pengalaman Kerja</h2>
         
         <div class="grid">
-            <!-- Kartu Pertama: Internship -->
             <div class="card" style="display: flex; flex-direction: column; gap: 1rem;" data-aos="fade" data-aos-duration="1200" data-aos-delay="200">
                 <div>
                     <h3 style="font-size: 1.8rem; color: var(--accent-mint); margin: 0;">Internship - Metrologi Legal</h3>
@@ -691,8 +677,7 @@
                         Selain itu, saya berperan aktif dalam berkoordinasi teknis di lapangan untuk menyelesaikan kendala alat ukur dengan mengedepankan prosedur operasional dan standar kualitas metrologi legal.</p>
                 </div>
                 
-                <!-- Dokumen Drive Internship muncul sedikit lebih lambat -->
-                <div style="width: 100%; border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 10px; overflow: hidden; background: #1a1a1a;" data-aos="fade" data-aos-delay="400">
+                <div style="width: 100%; border: 1px solid rgba(15, 252, 190, 0.2); border-radius: 10px; overflow: hidden; background: #0A0F1D;" data-aos="fade" data-aos-delay="400">
                     <iframe 
                         src="https://drive.google.com/file/d/10KRvOCWj82zSMIgBTqrUSXje5smkAZ9X/preview" 
                         width="100%" 
@@ -703,7 +688,6 @@
                 </div>
             </div>
 
-            <!-- Kartu Kedua: Asisten Praktikum -->
             <div class="card" style="display: flex; flex-direction: column; gap: 1rem;" data-aos="fade" data-aos-duration="1200" data-aos-delay="400">
                 <div>
                     <h3 style="font-size: 1.8rem; color: var(--accent-mint); margin: 0;">Asisten Praktikum</h3>
@@ -721,13 +705,12 @@
                     </ul>
                 </div>
 
-                <!-- Foto Dokumentasi muncul paling akhir -->
                 <div style="display: flex; gap: 0.8rem;" data-aos="fade" data-aos-delay="600">
                     <div style="flex: 1;">
-                        <img src="foto-asisten1.jpeg" alt="Kegiatan Praktikum 1" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(168, 85, 247, 0.4);">
+                        <img src="foto-asisten1.jpeg" alt="Kegiatan Praktikum 1" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(15, 252, 190, 0.2);">
                     </div>
                     <div style="flex: 1;">
-                        <img src="foto-asisten2.jpeg" alt="Kegiatan Praktikum 2" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(168, 85, 247, 0.4);">
+                        <img src="foto-asisten2.jpeg" alt="Kegiatan Praktikum 2" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(15, 252, 190, 0.2);">
                     </div>
                 </div>
             </div>
@@ -735,10 +718,8 @@
     </section>
 
     <section id="portofolio">
-        <!-- Judul Portofolio muncul perlahan -->
         <h2 style="font-size: 2.3rem" data-aos="fade" data-aos-duration="1000">Portofolio Proyek</h2>
         <div class="grid">
-            <!-- Kotak 1: Proyek Skripsi IHSG BiLSTM -->
             <a href="ihsg-detail.html" class="card-link" data-aos="fade" data-aos-duration="1200" data-aos-delay="200">
                 <div class="card">
                     <h3 style="font-size: 1.8rem; color: var(--accent-mint); margin: 0;">Prediksi IHSG (IDX Composite) dengan BiLSTM</h3>
@@ -756,10 +737,8 @@
     </section>
 
     <section id="sertifikasi">
-        <!-- Judul Sertifikasi muncul perlahan -->
         <h2 style="font-size: 2.3rem" data-aos="fade" data-aos-duration="1000">Pelatihan & Sertifikasi</h2>
         <div class="grid">
-            <!-- Kartu Sertifikasi Dicoding -->
             <div class="card" data-aos="fade" data-aos-duration="1200" data-aos-delay="200">
                 <h3 style="font-size: 1.8rem; color: var(--accent-mint); margin: 0.5;">Machine Learning Engineering Cohort</h3>
                 <p style="font-size: 1.3rem; text-align: justify; color: white;">Dicoding Indonesia</p>
@@ -771,11 +750,10 @@
                     peserta juga dibekali dengan kemampuan pada bidang <i>soft skill</i> dan literasi keuangan.
                 </p>
 
-                <!-- Iframe sertifikat muncul perlahan setelah teks -->
                 <iframe src="https://drive.google.com/file/d/1RjQwKb4N9_5TNgnzfyOXJrVSBeIBhpQD/preview" 
                         width="100%" 
                         height="500" 
-                        style="border: 1px solid #444; border-radius: 8px;" 
+                        style="border: 1px solid #222; border-radius: 8px;" 
                         allow="autoplay" 
                         data-aos="fade" 
                         data-aos-delay="400">
@@ -793,50 +771,47 @@
                 <p style="font-size: 1.1rem; text-align: justify; color: white;">Peraih Medali Perunggu dalam bidang makalah pada tahun <strong>2023</strong> yang diselenggarakan oleh Komunitas Analisis Matematika Indonesia (KAMINDO) dan bertempat di Universitas Sebelas Maret (UNS).</p>
 
                 <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; justify-content: center;">
-                    <!-- Dokumentasi 2023 -->
                     <div style="width: 30%; min-width: 200px;" data-aos="fade" data-aos-delay="200">
-                        <iframe src="https://drive.google.com/file/d/1YcycmpWlpclQYrorvK4mZFvpLDkfcXih/preview" width="100%" height="200" style="border: 1px solid #444; border-radius: 8px;" allow="autoplay"></iframe>
-                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid rgba(168, 85, 247, 0.2);">Dokumentasi Lomba</p>
+                        <iframe src="https://drive.google.com/file/d/1YcycmpWlpclQYrorvK4mZFvpLDkfcXih/preview" width="100%" height="200" style="border: 1px solid #222; border-radius: 8px;" allow="autoplay"></iframe>
+                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid rgba(15, 252, 190, 0.1);">Dokumentasi Lomba</p>
                     </div>
 
                     <div style="width: 30%; min-width: 200px;" data-aos="fade" data-aos-delay="400">
-                        <iframe src="https://drive.google.com/file/d/1kRJ-F5XldMc_NPJKkCmydG0oPE4hm4vh/preview" width="100%" height="200" style="border: 1px solid #444; border-radius: 8px;" allow="autoplay"></iframe>
-                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid rgba(168, 85, 247, 0.2);">Sertifikat Pemenang</p>
+                        <iframe src="https://drive.google.com/file/d/1kRJ-F5XldMc_NPJKkCmydG0oPE4hm4vh/preview" width="100%" height="200" style="border: 1px solid #222; border-radius: 8px;" allow="autoplay"></iframe>
+                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid rgba(15, 252, 190, 0.1);">Sertifikat Pemenang</p>
                     </div>
 
                     <div style="width: 30%; min-width: 200px;" data-aos="fade" data-aos-delay="600">
-                        <iframe src="https://drive.google.com/file/d/1xGEOOyAXQZWOdaKNNI4H3l169ooXQt9h/preview" width="100%" height="200" style="border: 1px solid #444; border-radius: 8px;" allow="autoplay"></iframe>
-                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid rgba(168, 85, 247, 0.2);">Karya Lomba</p>
+                        <iframe src="https://drive.google.com/file/d/1xGEOOyAXQZWOdaKNNI4H3l169ooXQt9h/preview" width="100%" height="200" style="border: 1px solid #222; border-radius: 8px;" allow="autoplay"></iframe>
+                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid rgba(15, 252, 190, 0.1);">Karya Lomba</p>
                     </div>
                 </div>
 
-                <hr style="margin: 1rem 0; opacity: 0.5;">
+                <hr style="margin: 1rem 0; opacity: 0.2; border-color: var(--accent-mint);">
 
                 <p style="font-size: 1.3rem; text-align: justify; color: white;" data-aos="fade">Lomba Makalah dan Poster Kalkulus KAMINDO</p>
                 <p style="font-size: 1.1rem; text-align: justify; color: white;" data-aos="fade">Peraih Medali Perak dalam bidang lomba poster pada tahun <strong>2024</strong> yang diselenggarakan oleh Komunitas Analisis Matematika Indonesia (KAMINDO) dan bertempat di Institut Teknologi Bandung (ITB).</p>
 
                 <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; justify-content: center;">
-                    <!-- Dokumentasi 2024 -->
                     <div style="width: 30%; min-width: 200px;" data-aos="fade" data-aos-delay="200">
-                        <iframe src="https://drive.google.com/file/d/1ijgRH_5EmqYDP5WoqQJzv0BlN0Y20k1G/preview" width="100%" height="200" style="border: 1px solid #444; border-radius: 8px;" allow="autoplay"></iframe>
-                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid rgba(168, 85, 247, 0.2);">Dokumentasi Lomba</p>
+                        <iframe src="https://drive.google.com/file/d/1ijgRH_5EmqYDP5WoqQJzv0BlN0Y20k1G/preview" width="100%" height="200" style="border: 1px solid #222; border-radius: 8px;" allow="autoplay"></iframe>
+                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid rgba(15, 252, 190, 0.1);">Dokumentasi Lomba</p>
                     </div>
 
                     <div style="width: 30%; min-width: 200px;" data-aos="fade" data-aos-delay="400">
-                        <iframe src="https://drive.google.com/file/d/1AF10jT9E4LecLEgK_4u75ftr1_gTkpIj/preview" width="100%" height="200" style="border: 1px solid #444; border-radius: 8px;" allow="autoplay"></iframe>
-                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid rgba(168, 85, 247, 0.2);">Sertifikat Pemenang</p>
+                        <iframe src="https://drive.google.com/file/d/1AF10jT9E4LecLEgK_4u75ftr1_gTkpIj/preview" width="100%" height="200" style="border: 1px solid #222; border-radius: 8px;" allow="autoplay"></iframe>
+                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid rgba(15, 252, 190, 0.1);">Sertifikat Pemenang</p>
                     </div>
 
                     <div style="width: 30%; min-width: 200px;" data-aos="fade" data-aos-delay="600">
-                        <iframe src="https://drive.google.com/file/d/1dk3kCc6wa6XuTSPDLlI1x9RnZyVYaWA7/preview" width="100%" height="200" style="border: 1px solid #444; border-radius: 8px;" allow="autoplay"></iframe>
-                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid rgba(168, 85, 247, 0.2);">Karya Lomba</p>
+                        <iframe src="https://drive.google.com/file/d/1dk3kCc6wa6XuTSPDLlI1x9RnZyVYaWA7/preview" width="100%" height="200" style="border: 1px solid #222; border-radius: 8px;" allow="autoplay"></iframe>
+                        <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid rgba(15, 252, 190, 0.1);">Karya Lomba</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Soft Skill -->
     <section id="lainnya">
         <div class="grid">
             <div class="card" data-aos="fade" data-aos-duration="1200">
@@ -875,13 +850,12 @@
         </div>
     </section>
 
-    <footer style="margin-top: 0; padding: 10px 0; border-top: 1px solid rgba(168, 85, 247, 0.2); text-align: center;">
+    <footer style="margin-top: 0; padding: 10px 0; border-top: 1px solid rgba(15, 252, 190, 0.1); text-align: center;">
         <p style="margin: 0; font-size: 0.85rem; color: white;">
             &copy; Portofolio Dwi Sandi Kalla - 2026.
         </p>
     </footer>
 
-    <!-- Library AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <script>
