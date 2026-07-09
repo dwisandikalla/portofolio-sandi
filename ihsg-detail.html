@@ -12,18 +12,12 @@
     <title>Detail Portofolio - [Nama Proyek]</title>
     <style>
         :root {
-            /* Biru utama dari user */
-            --blue-primary: #106EBE; 
-            /* Mint dari user */
-            --mint-accent: #0FFCBE;
-            
-            /* Warna latar belakang: Biru sangat gelap (Deep Blue) */
-            --bg-color: #106EBE;
-            /* Warna kartu: Biru navy yang serasi */
-            --card-bg: #0A3D70;
-            
-            --text-main: #FFFFFF;
-            --text-muted: #A0C4E8; /* Biru muda pudar */
+            --bg-color: #0d0216;      /* Hitam pekat dengan tint ungu */
+            --card-bg: #1a0a2e;       /* Ungu gelap untuk kontainer */
+            --accent-primary: #9d4edd; /* Ungu terang */
+            --accent-secondary: #c77dff;/* Ungu muda */
+            --text-main: #e0e0e0;
+            --text-muted: #b39ddb;
         }
 
         html {
@@ -57,7 +51,7 @@
         /* Navigasi / Tombol Kembali */
         .back-link {
             text-decoration: none;
-            color: var(--mint-accent);
+            color: var(--accent-secondary);
             font-size: 1.4rem; /* 14px */
             display: flex;
             align-items: center;
@@ -67,20 +61,19 @@
         }
 
         .back-link:hover {
-            filter: brightness(1.2);
             color: white;
             transform: translateX(-5px);
         }
 
         /* Header Proyek */
         header {
-            border-bottom: 2px solid var(--blue-primary);
+            border-bottom: 2px solid var(--card-bg);
             padding-bottom: 20px;
             margin-bottom: 40px;
         }
 
         h1 {
-            color: var(--mint-accent);
+            color: var(--accent-primary);
             font-size: 3rem; /* Ukuran font terkunci */
             margin: 0;
             letter-spacing: -1px;
@@ -110,12 +103,12 @@
             padding: 30px;
             border-radius: 15px;
             margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            border: 1px solid rgba(15, 252, 190, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(157, 78, 221, 0.1);
         }
 
         h2 {
-            color: var(--mint-accent);
+            color: var(--accent-secondary);
             font-size: 2.5rem; /* Ukuran font terkunci */
             margin-top: 0;
             display: flex;
@@ -127,7 +120,7 @@
             content: "";
             width: 4px;
             height: 20px;
-            background: var(--blue-primary);
+            background: var(--accent-primary);
             display: inline-block;
             border-radius: 2px;
         }
@@ -149,56 +142,23 @@
             padding: 10px;
             border-radius: 8px;
             text-align: center;
-            border-bottom: 2px solid var(--mint-accent);
+            border-bottom: 2px solid var(--accent-primary);
         }
 
         .result-box {
-            background: linear-gradient(135deg, #106EBE, #072136) !important;
+            background: linear-gradient(135deg, #3c096c, #240046);
             padding: 20px;
             border-radius: 10px;
-            border-left: 5px solid var(--mint-secondary);
-            color: white;
+            border-left: 5px solid var(--accent-secondary);
         }
 
-        .drive-wrapper {
-            position: relative;
-            width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .drive-wrapper iframe {
-            width: 100%;
-            min-width: 600px; /* Paksa iframe memiliki lebar minimum agar data tidak bertumpuk */
-            height: 400px;
-            border: none;
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #5a5a5a;
+            font-size: 0.8rem;
         }
 
-
-        @media print {
-            /* Menyembunyikan komponen yang tidak diperlukan saat dicetak, seperti Navbar blurred atau Tombol */
-            nav, .btn-contact, footer {
-                display: none !important;
-            }
-            
-            /* Menyesuaikan ukuran kertas dan margin */
-            @page {
-                size: A4;
-                margin: 15mm 12mm;
-            }
-            
-            body {
-                background: #ffffff;
-                color: #2d3748;
-                font-size: 11pt;
-            }
-            
-            /* Menghindari halaman terpotong di tengah-tengah kartu proyek */
-            .project-card {
-                page-break-inside: avoid;
-            }
-        }
-        
         /* Responsive */
         @media (max-width: 768px) {
             html {
@@ -218,19 +178,6 @@
                 flex-direction: column; /* Gambar berjejer ke bawah di HP */
                 gap: 15px;
             }
-
-            table {
-                font-size: 1.2rem; /* Kecilkan sedikit font (tadi diatur 1.6rem) */
-            }
-        
-            th, td {
-                padding: 8px 4px; /* Perkecil jarak antar sel */
-            }
-        
-            /* Khusus tabel Hyperparameter agar tidak terlalu lebar */
-            .visualisasi-grafik-container table {
-                min-width: 100%; 
-            }
         }
 
        /* Pengaturan dasar tabel */
@@ -242,52 +189,12 @@
             color: white;               /* Warna teks putih sesuai gambar baru */
         }
 
-        .table-container {
-            width: 100%;
-            overflow-x: auto; /* Munculkan scrollbar jika tabel terlalu lebar */
-            -webkit-overflow-scrolling: touch; /* Scroll lebih halus di iOS */
-            margin-bottom: 20px;
-        }
-
-        /* Mencegah tabel meluap keluar dari kotak biru */
-        .table-wrapper {
-            width: 100%;
-            overflow-x: auto; /* Aktifkan scroll horizontal jika layar sempit */
-            margin: 20px 0;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .stat-table {
-            width: 100%;
-            min-width: 300px; /* Lebar minimal agar teks tidak berhimpitan */
-            border-collapse: collapse;
-            font-family: 'Merriweather', serif;
-            color: white;
-        }
-        
-        .stat-table th {
-            border-top: 2px solid var(--accent-secondary); /* Warna Mint #0FFCBE */
-            border-bottom: 1px solid white;
-            padding: 12px;
-            text-align: left;
-        }
-        
-        .stat-table td {
-            padding: 10px 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .stat-table tr:last-child td {
-            border-bottom: 2px solid var(--accent-secondary); /* Penutup garis bawah Mint */
-        }
-
         /* Header */
         thead th {
             border-top: 2px solid white;    /* Garis atas tebal */
             border-bottom: 1px solid white; /* Garis bawah tipis */
             padding: 4px 10px;             /* Jarak kiri-kanan diperlebar */
             font-weight: normal;
-            border-top: 2px solid var(--mint-accent);
         }
 
         /* Isi data */
@@ -305,7 +212,6 @@
         /* Garis paling bawah */
         tbody tr:last-child td {
             border-bottom: 2px solid white;
-            border-bottom: 2px solid var(--mint-accent);
         }
         /* Mengatur kontainer agar gambarnya berada di tengah */
         .visualisasi-grafik-container {
@@ -338,7 +244,6 @@
             flex: 1;           /* Membuat setiap item memiliki lebar yang sama */
             text-align: center; /* Mengetengahkan teks judul */
             margin: 0;         /* Menghilangkan margin bawaan browser */
-            color: var(--mint-accent);
         }
 
         /* Mengatur ukuran gambar agar tidak berantakan */
@@ -355,13 +260,6 @@
             font-family: Arial, sans-serif;
             font-weight: bold;
             color: white;      /* Sesuaikan dengan tema gelap Anda */
-        }
-
-        footer {
-            color: var(--blue-primary);
-            text-align: center;
-            margin-top: 60px;
-            font-size: 0.8rem;
         }
     </style>
 </head>
@@ -413,35 +311,34 @@
             <h2 style="font-size: 2rem;">Hasil Analisis</h2>
             <h3>Data yang Digunakan</h3>
             <div class="result-box">
-                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">
-                    Data yang digunakan untuk proyek ini adalah data harga penutupan IHSG yang diperoleh dari 
-                    <a href="https://finance.yahoo.com/quote/%5EJKSE/history/" style="color: var(--accent-secondary); text-decoration: underline;">Yahoo Finance</a>
-                    dari tanggal 30 September 2019 sampai dengan 30 September 2025. Data harga penutupan IHSG tersaji pada tabel di bawah ini:
-                </p>
-            
-                <!-- Container Iframe Responsif -->
-                <div style="width: 100%; border: 1px solid var(--blue-primary); border-radius: 10px; overflow-x: auto; background: var(--card-bg); margin-top: 1.5rem; -webkit-overflow-scrolling: touch;">
+                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">Data yang digunakan untuk proyek ini adalah data harga penutupan IHSG yang diperoleh dari <a href="//finance.yahoo.com/quote/%5EJKSE/history/" style="color: white;">Yahoo Finance</a>
+                    dari tanggal 30 September 2019 sampai dengan 30 September 2025. Data harga penutupan IHSG terjadi pada tabel di bawah ini</p>
+                <div style="width: 100%; border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 10px; overflow: hidden; background: #1a1a1a; margin-top: 1.5rem;">
                     <iframe 
                         src="https://docs.google.com/spreadsheets/d/1m7MVidqyD3qnJXGqlgQy-mZL7UsRK6AP/preview" 
                         width="100%" 
-                        height="400px" 
-                        style="border: none; display: block; min-width: 600px;">
+                        height="300px" 
+                        style="border: none; display: block;">
                     </iframe>
                 </div>
-            
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 8px; text-align: center;">
-                    <i>Tabel: Data Lengkap Harga Penutupan IHSG</i>
+                <p style="font-size: 0.8rem; color: #aaa; margin-top: 8px; text-align: center;">
+                    <i>Tabel: Data Lengkap</i>
                 </p>
             </div>
 
             <h3>Statistika Deskriptif</h3>
             <div class="result-box">
-                <p style="font-size: 1.1rem; color: white; margin-bottom: 15px; text-align: justify;">
-                    Statistika deskriptif dari data tersebut tersaji dalam tabel di bawah ini:
-                </p>
-                
-                <!-- Gunakan wrapper agar tabel bisa di-swipe di HP -->
-                <div style="width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">Statistika deskriptif dari data tersebut tersaji dalam tabel di bawah ini:.</p>
+                                <!DOCTYPE html>
+                <html lang="id">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Statistika Deskriptif</title>
+                    <!-- Menghubungkan ke file CSS -->
+                    <link rel="stylesheet" href="style.css">
+                </head>
+                <body>
+
                     <table>
                         <thead>
                             <tr>
@@ -476,7 +373,9 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+
+                </body>
+                </html>
             </div>
 
             <h3>Visualisasi Data Harga Penutupan IHSG</h3>
@@ -515,14 +414,18 @@
 
             <h3><i>Hyperparameter Tuning</i></h3>
             <div class="result-box">
-                <!-- Deskripsi Tahap 1 -->
-                <p style="font-size: 1.1rem; color: white; margin-bottom: 15px; text-align: justify;">
-                    <i>Hyperparameter Tuning</i> dilakukan untuk mengetahui kombinasi dari hyperparameter terbaik. 
-                    Ruang pencarian <i>hyperparameter</i> yang digunakan tersaji pada tabel di bawah ini:
-                </p>
-            
-                <!-- Tabel 1: Ruang Pencarian (Responsive) -->
-                <div style="width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 25px;">
+                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;"><i>Hyperparameter Tuning</i> dilakukan untuk mengetahui kombinasi dari hyperparameter terbaik. 
+                    Ruang pencarian <i>hyperparameter</i> yang digunakan tersaji pada tabel di bawah ini:</p>
+                <!DOCTYPE html>
+                <html lang="id">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Hyperparameter</title>
+                    <!-- Menghubungkan ke file CSS -->
+                    <link rel="stylesheet" href="style.css">
+                </head>
+                <body>
+
                     <table>
                         <thead>
                             <tr>
@@ -548,21 +451,25 @@
                                 <td>4, 16, 32, 64, 128</td>
                             </tr>
                             <tr>
-                                <td><i>Epoch</i></td>
+                                <td><i>Epoch</i>></td>
                                 <td>50, 100, 150, 200, 250</td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            
-                <!-- Deskripsi Tahap 2 -->
-                <p style="font-size: 1.1rem; color: white; margin-bottom: 15px; text-align: justify;">
-                    Setelah dilakukan sebanyak 50 iterasi dengan metode <i>Random Search</i> pada masing-masing kategori, 
-                    diperoleh <i>hyperparameter</i> terbaik yang tersaji pada tabel di bawah ini:
-                </p>
-            
-                <!-- Tabel 2: Hasil Hyperparameter (Responsive) -->
-                <div style="width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                </body>
+                </html>
+                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">Setelah dilakukan sebanyak 50 iterasi dengan metode <i>Random Search</i> pada masing-masing kategori
+                    , diperoleh <i>hyperparameter</i> terbaik yang tersaji pada tabel di bawah ini:</p>
+                <!DOCTYPE html>
+                <html lang="id">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Hasil Hyperparameter</title>
+                    <!-- Menghubungkan ke file CSS -->
+                    <link rel="stylesheet" href="style.css">
+                </head>
+                <body>
+
                     <table>
                         <thead>
                             <tr>
@@ -592,7 +499,7 @@
                                 <td>200</td>
                             </tr>
                             <tr>
-                                <td>III</td>
+                                <td>II</td>
                                 <td>20</td>
                                 <td>0,1</td>
                                 <td>0,01</td>
@@ -601,36 +508,28 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </body>
+                </html>
             </div>
 
             <h3>Training dan Evaluasi</h3>
             <div class="result-box">
-                <p style="font-size: 1.1rem; color: white; margin-bottom: 15px; text-align: justify;">
-                    Training dilakukan untuk melatih model BiLSTM dengan kombinasi <i>hyperparameter</i> terbaik yang terbentuk. 
-                    <i>Training</i> model dilakukan sebanyak 20 kali yang bertujuan untuk mengetahui stabilitas model dengan cara mengukur rata-rata dan standar deviasi pada setiap kategori. 
-                    Pada setiap kategori dilakukan 20 kali <i>training</i> sehingga akan terbentuk 20 model pada setiap kategori. 
-                    Model terbaik diperoleh dari Kategori III (80:10:10) pada saat <i>training</i> ke-20. 
-                    Pada Kategori III juga didapatkan rata-rata MAPE dari keseluruhan proses <i>training</i> adalah <strong>0,926998%</strong> dan standar deviasi <strong>0,152902%</strong>, 
-                    yang menunjukkan kategori III jauh lebih stabil dibandingkan Kategori lainnya. 
-                    Evaluasi yang digunakan adalah MAPE, besar MAPE pada model terbaik adalah <strong>0,799346%</strong>.
+                <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">Training dilakukan untuk melatih model BiLSTM dengan kombinasi <i>hyperparameter</i> terbaik yang terbentuk.
+                <i>Training</i> model dilakukan sebanyak 20 kali yang bertujuan untuk mengetahui stabilitas model dengan cara mengukur rata-rata dan standar deviasi pada setiap kategori.
+                Pada setiap kategori dilakukan 20 kali <i>training</i> sehingga akan terbentuk 20 model pada setiap kategori. Model terbaik diperoleh dari Kategori III (80:10:10) Pada saat <i>training</i> ke-20.
+                Pada Kategori III juga didapatkan rata-rata MAPE dari keseluruhan proses <i>training</i> adalah <strong>0,926998%</strong> dan standar deviasi <strong>0,152902%</strong>,
+                yang menunjukkan kategori III jauh lebih stabil dibandingkan Kategori lainnya.
+                Evaluasi yang digunakan adalah MAPE, besar MAPE pada model terbaik adalah <strong>0,799346%</strong>.
                 </p>
-            
-                <!-- Container Iframe Responsif -->
-                <div style="width: 100%; border: 1px solid var(--blue-primary); border-radius: 10px; overflow-x: auto; background: var(--card-bg); -webkit-overflow-scrolling: touch;">
+                <div style="width: 100%; border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 10px; overflow: hidden; background: #1a1a1a;">
                     <iframe 
                         src="https://docs.google.com/spreadsheets/d/1ZVAvpkv0UcvZqy9h9zqpO6mt2lbtqeS8pUnryD-omvg/preview" 
                         width="100%" 
-                        height="400px" 
-                        style="border: none; display: block; min-width: 600px;">
+                        height="300px" 
+                        style="border: none; display: block;">
                     </iframe>
                 </div>
-                <p style="text-align: center; font-size: 0.9rem; color: var(--accent-secondary); margin-top: 10px;">
-                    <i>Tabel: Hasil Training dan Evaluasi Model</i>
-                </p>
-            </div>
-                
-            <p style="font-size: 0.8rem; color: #aaa; margin-top: 8px; text-align: center;">
+                <p style="font-size: 0.8rem; color: #aaa; margin-top: 8px; text-align: center;">
                     <i>Tabel: Rincian Hasil Training dan Evaluasi Model BiLSTM</i>
                 </p>
                 <p style="font-size: 1.1rem; color: white; margin: 0; text-align: justify;">Pada saat <i>training</i>, <i>loss function</i> yang digunakan adalah <i>Mean Square Error</i> (MSE).
