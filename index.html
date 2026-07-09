@@ -2,19 +2,15 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <!-- 1. PENGUNCI VIEWPORT: Wajib agar mobile tidak zoom otomatis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Dwi Sandi Kalla | Portfolio</title>
     
-    <!-- 2. PENGUNCI JENIS FONT: Mengambil dari Google Fonts agar SAMA di semua OS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- Normalize CSS untuk menyamakan standar antar browser -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 
-    <!-- Library AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
@@ -48,8 +44,9 @@
 
         body {
             font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
-            background: var(--primary-bg);
-            background-attachment: fixed;
+            /* MENGGUNAKAN GAMBAR BACK.PNG DENGAN PROPERTI COVER AGAR RESPONSIV */
+            background: url('back.png') no-repeat center center fixed;
+            background-size: cover;
             color: var(--text-light);
             /* Gunakan rem, sekarang 1.6rem pasti 16px di semua browser */
             font-size: 1.6rem; 
@@ -550,7 +547,6 @@
 
     <nav>
         <div class="nav-container">
-            <!-- Tambahkan tag img di dalam tag anchor logo -->
             <a href="#" class="logo">
                 <img src="profile2.png" alt="Dwi Sandi Kalla" class="nav-profile-img" id="nav-profile-img">
                 <span>Dwi Sandi Kalla</span>
@@ -576,7 +572,6 @@
 
 
     <section id="home">
-        <!-- Foto di Kiri dengan animasi fade-right untuk kesan masuk yang halus -->
         <img src="profile2.png" 
             class="profile-img" 
             alt="Dwi Sandi Kalla" 
@@ -584,14 +579,12 @@
             data-aos-duration="1500">
 
         <div class="hero-text-container">
-            <!-- Judul dengan animasi fade-up -->
-            <h1 style="font-size: 2.5rem;" 
+            <h1 style="font-size: 3 rem;" 
                 data-aos="fade-up" 
                 data-aos-duration="1000">
                 Dwi Sandi Kalla
             </h1>
 
-            <!-- Deskripsi dengan delay agar muncul setelah judul -->
             <p class="hero-desc" 
             data-aos="fade-up" 
             data-aos-delay="300" 
@@ -603,14 +596,24 @@
                 Mencari peluang pada bidang data, analis, dan posisi lainnya yang membutuhkan kemampuan analitis dan <i>problem solving</i>.
             </p>
             <br>
-            <!-- Container tombol dengan delay paling akhir -->
             <div class="btn-container" 
                 data-aos="fade-up" 
                 data-aos-delay="500" 
-                data-aos-duration="1000">
-                <a href="mailto:dwisandikalla189@gmail.com" class="btn">Email Me</a>
-                <a href="https://www.linkedin.com/in/dwi-sandi-kalla" class="btn">LinkedIn</a>
-                <a href="https://wa.me/6289512056807" class="btn">WhatsApp</a>
+                data-aos-duration="1000"
+                style="display: flex; align-items: center; gap: 100px; margin-top: 2px !important;">
+                
+                <a href="mailto:dwisandikalla189@gmail.com" style="display: inline-flex;">
+                    <img src="mail.png" alt="Email" style="height: 50px; width: auto; object-fit: contain;">
+                </a>
+                
+                <a href="https://www.linkedin.com/in/dwi-sandi-kalla" style="display: inline-flex;">
+                    <img src="link.png" alt="LinkedIn" style="height: 50px; width: auto; object-fit: contain;">
+                </a>
+                
+                <a href="https://wa.me/6289512056807" style="display: inline-flex;">
+                    <img src="wa.png" alt="WhatsApp" style="height: 50px; width: auto; object-fit: contain;">
+                </a>
+                
             </div>
         </div>
     </section>
@@ -705,11 +708,9 @@
     </section>
 
     <section id="pengalaman">
-        <!-- Judul Section muncul perlahan -->
         <h2 style="font-size: 2.3rem" data-aos="fade" data-aos-duration="1000">Pengalaman Kerja</h2>
         
         <div class="grid">
-            <!-- Kartu Pertama: Internship -->
             <div class="card" style="display: flex; flex-direction: column; gap: 1rem;" data-aos="fade" data-aos-duration="1200" data-aos-delay="200">
                 <div>
                     <h3 style="font-size: 1.8rem; color: var(--text-light); margin: 0;">Internship - Metrologi Legal</h3>
@@ -719,7 +720,6 @@
                         Selain itu, saya berperan aktif dalam berkoordinasi teknis di lapangan untuk menyelesaikan kendala alat ukur dengan mengedepankan prosedur operasional dan standar kualitas metrologi legal.</p>
                 </div>
                 
-                <!-- Dokumen Drive Internship muncul sedikit lebih lambat -->
                 <div style="width: 100%; border: 1px solid var(--card-border); border-radius: 10px; overflow: hidden; background: #0B0F17;" data-aos="fade" data-aos-delay="400">
                     <iframe 
                         src="https://drive.google.com/file/d/10KRvOCWj82zSMIgBTqrUSXje5smkAZ9X/preview" 
@@ -731,7 +731,6 @@
                 </div>
             </div>
 
-            <!-- Kartu Kedua: Asisten Praktikum -->
             <div class="card" style="display: flex; flex-direction: column; gap: 1rem;" data-aos="fade" data-aos-duration="1200" data-aos-delay="400">
                 <div>
                     <h3 style="font-size: 1.8rem; color: var(--text-light); margin: 0;">Asisten Praktikum</h3>
@@ -749,7 +748,6 @@
                     </ul>
                 </div>
 
-                <!-- Foto Dokumentasi muncul paling akhir -->
                 <div style="display: flex; gap: 0.8rem;" data-aos="fade" data-aos-delay="600">
                     <div style="flex: 1;">
                         <img src="foto-asisten1.jpeg" alt="Kegiatan Praktikum 1" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid var(--card-border);">
@@ -763,10 +761,8 @@
     </section>
 
     <section id="portofolio">
-        <!-- Judul Portofolio muncul perlahan -->
         <h2 style="font-size: 2.3rem" data-aos="fade" data-aos-duration="1000">Portofolio Proyek</h2>
         <div class="grid">
-            <!-- Menambahkan class full-width-card agar lebar kotak sama simetris -->
             <a href="ihsg-detail.html" class="card-link full-width-card" data-aos="fade" data-aos-duration="1200" data-aos-delay="200">
                 <div class="card">
                     <h3 style="font-size: 1.8rem; color: var(--text-light); margin: 0;">Prediksi IHSG (IDX Composite) dengan BiLSTM</h3>
@@ -784,10 +780,8 @@
     </section>
 
     <section id="sertifikasi">
-        <!-- Judul Sertifikasi muncul perlahan -->
         <h2 style="font-size: 2.3rem" data-aos="fade" data-aos-duration="1000">Pelatihan & Sertifikasi</h2>
         <div class="grid">
-            <!-- Kartu Sertifikasi Dicoding -->
             <div class="card full-width-card" data-aos="fade" data-aos-duration="1200" data-aos-delay="200">
                 <h3 style="font-size: 1.8rem; color: var(--text-light); margin: 0.5;">Machine Learning Engineering Cohort</h3>
                 <p style="font-size: 1.3rem; text-align: justify; color: white;">Dicoding Indonesia</p>
@@ -799,7 +793,6 @@
                     peserta juga dibekali dengan kemampuan pada bidang <i>soft skill</i> dan literasi keuangan.
                 </p>
 
-                <!-- Iframe sertifikat muncul perlahan setelah teks -->
                 <iframe src="https://drive.google.com/file/d/1RjQwKb4N9_5TNgnzfyOXJrVSBeIBhpQD/preview" 
                         width="100%" 
                         height="500" 
@@ -821,7 +814,6 @@
                 <p style="font-size: 1.1rem; text-align: justify; color: white;">Peraih Medali Perunggu dalam bidang makalah pada tahun <strong>2023</strong> yang diselenggarakan oleh Komunitas Analisis Matematika Indonesia (KAMINDO) dan bertempat di Universitas Sebelas Maret (UNS).</p>
 
                 <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; justify-content: center;">
-                    <!-- Dokumentasi 2023 -->
                     <div style="width: 30%; min-width: 200px;" data-aos="fade" data-aos-delay="200">
                         <iframe src="https://drive.google.com/file/d/1YcycmpWlpclQYrorvK4mZFvpLDkfcXih/preview" width="100%" height="200" style="border: 1px solid #222; border-radius: 8px;" allow="autoplay"></iframe>
                         <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid var(--card-border);">Dokumentasi Lomba</p>
@@ -844,7 +836,6 @@
                 <p style="font-size: 1.1rem; text-align: justify; color: white;" data-aos="fade">Peraih Medali Perak dalam bidang lomba poster pada tahun <strong>2024</strong> yang diselenggarakan oleh Komunitas Analisis Matematika Indonesia (KAMINDO) dan bertempat di Institut Teknologi Bandung (ITB).</p>
 
                 <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; justify-content: center;">
-                    <!-- Dokumentasi 2024 -->
                     <div style="width: 30%; min-width: 200px;" data-aos="fade" data-aos-delay="200">
                         <iframe src="https://drive.google.com/file/d/1ijgRH_5EmqYDP5WoqQJzv0BlN0Y20k1G/preview" width="100%" height="200" style="border: 1px solid #222; border-radius: 8px;" allow="autoplay"></iframe>
                         <p style="font-size: 0.9rem; text-align: center; padding: 10px; margin: 0; color: white; border-top: 1px solid var(--card-border);">Dokumentasi Lomba</p>
@@ -864,7 +855,6 @@
         </div>
     </section>
 
-    <!-- Section Soft Skill -->
     <section id="lainnya">
         <div class="grid">
             <div class="card full-width-card" data-aos="fade" data-aos-duration="1200">
@@ -909,7 +899,6 @@
         </p>
     </footer>
 
-    <!-- Library AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <script>
